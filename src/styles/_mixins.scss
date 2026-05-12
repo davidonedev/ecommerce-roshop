@@ -1,0 +1,81 @@
+@use 'variables' as *;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin container {
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@mixin section-padding {
+  padding: $section-py 0;
+}
+
+@mixin smooth-transition($props: all, $duration: 0.3s, $easing: ease) {
+  transition: $props $duration $easing;
+}
+
+@mixin hover-lift {
+  @include smooth-transition(transform, 0.3s);
+  &:hover { transform: translateY(-4px); }
+}
+
+@mixin overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(58, 58, 58, 0.72);
+  @include flex-center;
+  flex-direction: column;
+  opacity: 0;
+  @include smooth-transition(opacity, 0.35s);
+}
+
+@mixin btn-primary {
+  background: $primary;
+  color: $white;
+  font-family: $font-primary;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 14px 48px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  @include smooth-transition(background, 0.25s);
+  &:hover { background: $primary-dark; }
+}
+
+@mixin btn-outline {
+  background: transparent;
+  color: $primary;
+  font-family: $font-primary;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 14px 48px;
+  border: 1.5px solid $primary;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  @include smooth-transition(all, 0.25s);
+  &:hover {
+    background: $primary;
+    color: $white;
+  }
+}
+
+@mixin respond-to($bp) {
+  @if $bp == sm  { @media (max-width: #{$bp-sm})  { @content; } }
+  @if $bp == md  { @media (max-width: #{$bp-md})  { @content; } }
+  @if $bp == lg  { @media (max-width: #{$bp-lg})  { @content; } }
+  @if $bp == xl  { @media (max-width: #{$bp-xl})  { @content; } }
+  @if $bp == 2xl { @media (max-width: #{$bp-2xl}) { @content; } }
+}

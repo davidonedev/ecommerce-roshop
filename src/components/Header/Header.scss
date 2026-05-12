@@ -1,0 +1,132 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: $white;
+  height: 100px;
+  @include flex-between;
+  padding: 0 40px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+
+  @include respond-to(lg) {
+    padding: 0 24px;
+    height: 72px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    cursor: pointer;
+
+    &-icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    &-text {
+      font-family: $font-primary;
+      font-weight: 700;
+      font-size: 26px;
+      color: $dark;
+      letter-spacing: -0.5px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+
+    @include respond-to(lg) {
+      gap: 28px;
+    }
+
+    @include respond-to(md) {
+      display: none;
+    }
+
+    a {
+      font-family: $font-primary;
+      font-weight: 500;
+      font-size: 16px;
+      color: $dark;
+      position: relative;
+      @include smooth-transition(color);
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: $primary;
+        @include smooth-transition(width, 0.25s);
+      }
+
+      &:hover {
+        color: $primary;
+        &::after { width: 100%; }
+      }
+
+      &.active {
+        font-weight: 700;
+        color: $dark;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+
+    @include respond-to(lg) {
+      gap: 18px;
+    }
+
+    button {
+      background: none;
+      border: none;
+      padding: 4px;
+      cursor: pointer;
+      color: $dark;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      @include smooth-transition(color);
+
+      &:hover { color: $primary; }
+
+      svg {
+        width: 24px;
+        height: 24px;
+        stroke-width: 1.6;
+      }
+    }
+  }
+
+  &__cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 18px;
+    height: 18px;
+    background: $primary;
+    color: $white;
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
