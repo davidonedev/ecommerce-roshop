@@ -1,0 +1,145 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.footer {
+  background: $white;
+  border-top: 1px solid #E8E0D8;
+
+  &__main {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 2fr;
+    gap: 40px;
+    max-width: $container-max;
+    margin: 0 auto;
+    padding: 72px 24px 56px;
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-to(sm) {
+      grid-template-columns: 1fr;
+      padding: 48px 24px 40px;
+    }
+  }
+
+  // ─ Brand ─
+  &__brand {
+    max-width: 280px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 28px;
+    text-decoration: none;
+
+    &-text {
+      font-family: $font-primary;
+      font-size: 24px;
+      font-weight: 700;
+      color: $dark;
+    }
+  }
+
+  &__address {
+    font-family: $font-primary;
+    font-size: 14px;
+    color: $light;
+    line-height: 1.8;
+    font-style: normal;
+  }
+
+  // ─ Column ─
+  &__col-title {
+    font-family: $font-primary;
+    font-size: 16px;
+    font-weight: 600;
+    color: $light;
+    margin-bottom: 28px;
+    text-transform: capitalize;
+    letter-spacing: 0.02em;
+  }
+
+  &__col-links {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  &__col-link {
+    font-family: $font-primary;
+    font-size: 14px;
+    color: $dark;
+    text-decoration: none;
+    font-weight: 500;
+    @include smooth-transition(color, 0.2s);
+
+    &:hover { color: $primary; }
+  }
+
+  // ─ Newsletter ─
+  &__newsletter-form {
+    display: flex;
+    gap: 8px;
+    margin-top: 0;
+
+    @include respond-to(sm) {
+      flex-direction: column;
+    }
+  }
+
+  &__newsletter-input {
+    flex: 1;
+    border: none;
+    border-bottom: 1.5px solid $dark;
+    padding: 8px 0;
+    font-family: $font-primary;
+    font-size: 13px;
+    color: $dark;
+    outline: none;
+    background: transparent;
+    min-width: 0;
+
+    &::placeholder { color: $light; }
+
+    &:focus { border-bottom-color: $primary; }
+  }
+
+  &__newsletter-btn {
+    background: none;
+    border: none;
+    border-bottom: 1.5px solid $dark;
+    font-family: $font-primary;
+    font-size: 13px;
+    font-weight: 600;
+    color: $dark;
+    letter-spacing: 0.06em;
+    padding: 8px 0;
+    cursor: pointer;
+    text-transform: uppercase;
+    white-space: nowrap;
+    @include smooth-transition(color, 0.2s);
+
+    &:hover {
+      color: $primary;
+      border-bottom-color: $primary;
+    }
+  }
+
+  // ─ Bottom bar ─
+  &__bottom {
+    border-top: 1px solid #E8E0D8;
+    padding: 28px 24px;
+    max-width: $container-max;
+    margin: 0 auto;
+  }
+
+  &__copyright {
+    font-family: $font-primary;
+    font-size: 13px;
+    color: $medium;
+    font-weight: 500;
+  }
+}

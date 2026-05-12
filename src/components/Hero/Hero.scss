@@ -1,0 +1,103 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  max-height: 900px;
+  overflow: hidden;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1800&q=90');
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.15) 100%);
+  }
+
+  &__card {
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(252, 235, 201, 0.85);
+    backdrop-filter: blur(4px);
+    padding: 48px 40px 56px;
+    max-width: 440px;
+    width: 90%;
+    animation: slideInRight 0.8s ease forwards;
+
+    @include respond-to(lg) {
+      right: 5%;
+      padding: 36px 28px 40px;
+      max-width: 360px;
+    }
+
+    @include respond-to(md) {
+      right: 50%;
+      transform: translate(50%, -50%);
+      max-width: 88%;
+      text-align: center;
+    }
+  }
+
+  &__tag {
+    font-family: $font-primary;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: $dark;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  &__title {
+    font-family: $font-primary;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700;
+    line-height: 1.12;
+    color: $primary;
+    margin-bottom: 20px;
+  }
+
+  &__desc {
+    font-family: $font-primary;
+    font-size: 14px;
+    line-height: 1.7;
+    color: $medium;
+    margin-bottom: 40px;
+    max-width: 300px;
+  }
+
+  &__btn {
+    @include btn-primary;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    padding: 16px 56px;
+
+    @include respond-to(md) {
+      padding: 14px 40px;
+    }
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
