@@ -3,10 +3,10 @@ import { useCart } from '../../context/CartContext';
 import './Header.scss';
 
 const NavLinks = [
-  { label: 'Home', to: '/' },
-  { label: 'Shop', to: '/shop' },
-  { label: 'About', to: '#about' },
-  { label: 'Contact', to: '#contact' },
+  { label: 'Início', to: '/' },
+  { label: 'Loja', to: '/shop' },
+  { label: 'Sobre', to: '#about' },
+  { label: 'Contato', to: '/contact' },
 ];
 
 export default function Header() {

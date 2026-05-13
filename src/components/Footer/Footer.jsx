@@ -2,23 +2,23 @@ import { Link } from 'react-router-dom';
 import './Footer.scss';
 
 const links = [
-  { label: 'Home', to: '/' },
-  { label: 'Shop', to: '/shop' },
-  { label: 'About', to: '#about' },
-  { label: 'Contact', to: '#contact' },
+  { label: 'Início', to: '/' },
+  { label: 'Loja', to: '/shop' },
+  { label: 'Sobre', to: '#about' },
+  { label: 'Contato', to: '/contact' },
 ];
 
 const help = [
-  { label: 'Payment Options', href: '#' },
-  { label: 'Returns', href: '#' },
-  { label: 'Privacy Policies', href: '#' },
+  { label: 'Formas de Pagamento', href: '#' },
+  { label: 'Trocas e Devoluções', href: '#' },
+  { label: 'Política de Privacidade', href: '#' },
 ];
 
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer__main">
-        {/* Brand */}
+        {/* Marca */}
         <div className="footer__brand">
           <Link to="/" className="footer__logo">
             <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
@@ -46,9 +46,9 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Help */}
+        {/* Ajuda */}
         <div>
-          <p className="footer__col-title">Help</p>
+          <p className="footer__col-title">Ajuda</p>
           <ul className="footer__col-links">
             {help.map((l) => (
               <li key={l.label}>
@@ -67,21 +67,20 @@ export default function Footer() {
           >
             <input
               type="email"
-              placeholder="Enter Your Email Address"
+              placeholder="Digite seu e-mail"
               className="footer__newsletter-input"
-              aria-label="Email for newsletter"
+              aria-label="E-mail para newsletter"
             />
             <button type="submit" className="footer__newsletter-btn">
-              Subscribe
+              Assinar
             </button>
           </form>
         </div>
       </div>
 
-      {/* Bottom bar */}
       <div className="footer__bottom">
         <p className="footer__copyright">
-          2023 furino. All rights reserved
+          2023 Funiro. Todos os direitos reservados
         </p>
       </div>
     </footer>

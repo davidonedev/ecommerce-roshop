@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import ShopFeatures from '../components/ShopFeatures/ShopFeatures';
 import Footer from '../components/Footer/Footer';
-import { ProductCard, formatPrice } from '../components/Products/Products';
+import { ProductCard, formatPrice, formatInstallment } from '../components/Products/Products';
 import { products } from '../data/products';
 import { useCart } from '../context/CartContext';
 import './ProductPage.scss';
@@ -54,12 +54,12 @@ export default function ProductPage() {
         <Header />
         <main style={{ paddingTop: '100px', minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <div style={{ textAlign: 'center' }}>
-            <h2 style={{ fontFamily: 'Poppins, sans-serif', fontSize: '28px', marginBottom: '16px' }}>Product not found</h2>
+            <h2 style={{ fontFamily: 'Poppins, sans-serif', fontSize: '28px', marginBottom: '16px' }}>Produto não encontrado</h2>
             <button
               onClick={() => navigate('/shop')}
               style={{ fontFamily: 'Poppins, sans-serif', padding: '12px 32px', background: '#B88E2F', color: '#fff', border: 'none', cursor: 'pointer', fontSize: '16px' }}
             >
-              Back to Shop
+              Voltar para a Loja
             </button>
           </div>
         </main>
@@ -78,9 +78,9 @@ export default function ProductPage() {
         {/* ── Breadcrumb ── */}
         <nav className="product-page__breadcrumb" aria-label="Breadcrumb">
           <div className="product-page__breadcrumb-inner">
-            <Link to="/" className="product-page__bc-link">Home</Link>
+            <Link to="/" className="product-page__bc-link">Início</Link>
             <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>
-            <Link to="/shop" className="product-page__bc-link">Shop</Link>
+            <Link to="/shop" className="product-page__bc-link">Loja</Link>
             <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>
             <span className="product-page__bc-separator" aria-hidden="true" />
             <span className="product-page__bc-current">{product.name}</span>
@@ -99,9 +99,9 @@ export default function ProductPage() {
                     key={i}
                     className={`product-page__thumb${activeImg === i ? ' product-page__thumb--active' : ''}`}
                     onClick={() => setActiveImg(i)}
-                    aria-label={`View image ${i + 1}`}
+                    aria-label={`Ver imagem ${i + 1}`}
                   >
-                    <img src={img} alt={`${product.name} view ${i + 1}`} loading="lazy" />
+                    <img src={img} alt={`${product.name} foto ${i + 1}`} loading="lazy" />
                   </button>
                 ))}
               </div>
@@ -118,11 +118,14 @@ export default function ProductPage() {
             <div className="product-page__info">
               <h1 className="product-page__name">{product.name}</h1>
               <p className="product-page__price">{formatPrice(product.price)}</p>
+              <p className="product-page__installment">
+                ou 12x de {formatInstallment(product.price)} sem juros
+              </p>
 
               <div className="product-page__rating-row">
                 <StarRating rating={product.rating} />
                 <span className="product-page__rating-sep" aria-hidden="true" />
-                <span className="product-page__review-count">{product.reviewCount} Customer Review</span>
+                <span className="product-page__review-count">{product.reviewCount} Avaliações de Clientes</span>
               </div>
 
               <p className="product-page__short-desc">{product.longDescription}</p>
@@ -131,7 +134,7 @@ export default function ProductPage() {
 
               {/* Size */}
               <div className="product-page__option-group">
-                <span className="product-page__option-label">Size</span>
+                <span className="product-page__option-label">Tamanho</span>
                 <div className="product-page__size-btns">
                   {product.sizes.map((size, i) => (
                     <button
@@ -147,7 +150,7 @@ export default function ProductPage() {
 
               {/* Color */}
               <div className="product-page__option-group">
-                <span className="product-page__option-label">Color</span>
+                <span className="product-page__option-label">Cor</span>
                 <div className="product-page__colors">
                   {product.colors.map((color, i) => (
                     <button
@@ -167,7 +170,7 @@ export default function ProductPage() {
                   <button
                     className="product-page__qty-btn"
                     onClick={() => setQty((q) => Math.max(1, q - 1))}
-                    aria-label="Decrease quantity"
+                    aria-label="Diminuir quantidade"
                   >
                     -
                   </button>
@@ -175,7 +178,7 @@ export default function ProductPage() {
                   <button
                     className="product-page__qty-btn"
                     onClick={() => setQty((q) => q + 1)}
-                    aria-label="Increase quantity"
+                    aria-label="Aumentar quantidade"
                   >
                     +
                   </button>
@@ -184,9 +187,9 @@ export default function ProductPage() {
                   className="product-page__add-btn"
                   onClick={() => addItem(product, qty)}
                 >
-                  Add To Cart
+                  Adicionar ao Carrinho
                 </button>
-                <button className="product-page__compare-btn">+ Compare</button>
+                <button className="product-page__compare-btn">+ Comparar</button>
               </div>
 
               {/* Meta */}
@@ -197,7 +200,7 @@ export default function ProductPage() {
                   <dd>: {product.sku}</dd>
                 </div>
                 <div className="product-page__meta-row">
-                  <dt>Category</dt>
+                  <dt>Categoria</dt>
                   <dd>: {product.category}</dd>
                 </div>
                 <div className="product-page__meta-row">
@@ -205,16 +208,16 @@ export default function ProductPage() {
                   <dd>: {product.tags.join(', ')}</dd>
                 </div>
                 <div className="product-page__meta-row">
-                  <dt>Share</dt>
+                  <dt>Compartilhar</dt>
                   <dd className="product-page__share">
                     :
-                    <a href="#" aria-label="Share on Facebook" onClick={(e) => e.preventDefault()}>
+                    <a href="#" aria-label="Compartilhar no Facebook" onClick={(e) => e.preventDefault()}>
                       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                     </a>
-                    <a href="#" aria-label="Share on LinkedIn" onClick={(e) => e.preventDefault()}>
+                    <a href="#" aria-label="Compartilhar no LinkedIn" onClick={(e) => e.preventDefault()}>
                       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                     </a>
-                    <a href="#" aria-label="Share on Twitter" onClick={(e) => e.preventDefault()}>
+                    <a href="#" aria-label="Compartilhar no Twitter" onClick={(e) => e.preventDefault()}>
                       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
                     </a>
                   </dd>
@@ -228,9 +231,9 @@ export default function ProductPage() {
         <section className="product-page__tabs">
           <div className="product-page__tabs-nav">
             {[
-              { key: 'description', label: 'Description' },
-              { key: 'additional', label: 'Additional Information' },
-              { key: 'reviews', label: `Reviews [${product.reviewCount}]` },
+              { key: 'description', label: 'Descrição' },
+              { key: 'additional', label: 'Informações Adicionais' },
+              { key: 'reviews', label: `Avaliações [${product.reviewCount}]` },
             ].map((tab) => (
               <button
                 key={tab.key}
@@ -246,30 +249,30 @@ export default function ProductPage() {
             {activeTab === 'description' && (
               <>
                 <p className="product-page__tab-text">
-                  Embodying the raw, wayward spirit of contemporary design, the {product.name} takes
-                  the unmistakable look and feel of premium craftsmanship, unplugs from the ordinary,
-                  and takes center stage in any room. Its clean lines and thoughtful proportions make
-                  it a statement piece that commands attention without demanding it.
+                  Incorporando o espírito ousado do design contemporâneo, o {product.name} traz
+                  o visual e a sensação inconfundíveis do artesanato premium, se destaca do comum e
+                  ocupa o centro das atenções em qualquer ambiente. Suas linhas limpas e proporções
+                  cuidadosas fazem dele uma peça marcante que chama a atenção sem precisar pedir.
                 </p>
                 <p className="product-page__tab-text">
-                  Weighing in with a sturdy yet refined build, the {product.name} is a timeless piece
-                  of quality engineering. Setting the bar as one of the finest pieces in its class, it
-                  offers a well-balanced aesthetic which boasts a clear silhouette and pronounced
-                  detailing. The carefully considered proportions allow you to place it comfortably
-                  within your space while the quality materials ensure easy care and stylish longevity.
+                  Com uma estrutura robusta e refinada, o {product.name} é uma peça atemporal de
+                  engenharia de qualidade. Referência entre as melhores peças de sua classe, oferece
+                  uma estética equilibrada com silhueta elegante e detalhamento marcante. As proporções
+                  cuidadosamente planejadas permitem posicioná-lo com conforto no seu espaço, enquanto
+                  os materiais de qualidade garantem fácil cuidado e longevidade com estilo.
                 </p>
                 <div className="product-page__tab-images">
                   <div className="product-page__tab-img-wrap">
                     <img
                       src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&q=80"
-                      alt="Product in room setting"
+                      alt="Produto em ambiente"
                       loading="lazy"
                     />
                   </div>
                   <div className="product-page__tab-img-wrap">
                     <img
                       src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=700&q=80"
-                      alt="Product detail"
+                      alt="Detalhe do produto"
                       loading="lazy"
                     />
                   </div>
@@ -282,11 +285,11 @@ export default function ProductPage() {
                 <table className="product-page__add-table">
                   <tbody>
                     <tr><th>SKU</th><td>{product.sku}</td></tr>
-                    <tr><th>Category</th><td>{product.category}</td></tr>
+                    <tr><th>Categoria</th><td>{product.category}</td></tr>
                     <tr><th>Tags</th><td>{product.tags.join(', ')}</td></tr>
-                    <tr><th>Sizes Available</th><td>{product.sizes.join(', ')}</td></tr>
-                    <tr><th>Available Colors</th><td>{product.colors.length} colors</td></tr>
-                    <tr><th>Rating</th><td>{product.rating} / 5 ({product.reviewCount} reviews)</td></tr>
+                    <tr><th>Tamanhos Disponíveis</th><td>{product.sizes.join(', ')}</td></tr>
+                    <tr><th>Cores Disponíveis</th><td>{product.colors.length} cores</td></tr>
+                    <tr><th>Avaliação</th><td>{product.rating} / 5 ({product.reviewCount} avaliações)</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -295,7 +298,7 @@ export default function ProductPage() {
             {activeTab === 'reviews' && (
               <div className="product-page__reviews">
                 <p className="product-page__tab-text">
-                  {product.reviewCount} customers have reviewed this product. Average rating:{' '}
+                  {product.reviewCount} clientes avaliaram este produto. Nota média:{' '}
                   <strong>{product.rating}</strong> / 5.
                 </p>
                 <div className="product-page__review-list">
@@ -304,12 +307,12 @@ export default function ProductPage() {
                       <StarRating rating={product.rating} />
                       <p className="product-page__review-text">
                         {i === 0
-                          ? 'Absolutely love this product! The quality is outstanding and it looks even better in person.'
+                          ? 'Amei este produto! A qualidade é excepcional e fica ainda mais bonito pessoalmente.'
                           : i === 1
-                          ? 'Great value for money. Solid construction and arrived well packaged. Would recommend.'
-                          : 'Beautiful design, fits perfectly in my living room. Fast delivery too!'}
+                          ? 'Ótimo custo-benefício. Construção sólida e chegou bem embalado. Super recomendo!'
+                          : 'Design lindo, combina perfeitamente com minha sala. Entrega rápida também!'}
                       </p>
-                      <span className="product-page__review-author">Customer {i + 1}</span>
+                      <span className="product-page__review-author">Cliente {i + 1}</span>
                     </div>
                   ))}
                 </div>
@@ -320,7 +323,7 @@ export default function ProductPage() {
 
         {/* ── Related Products ── */}
         <section className="product-page__related">
-          <h2 className="product-page__related-title">Related Products</h2>
+          <h2 className="product-page__related-title">Produtos Relacionados</h2>
           <div className="product-page__related-grid">
             {relatedProducts.map((p) => (
               <ProductCard key={p.id} product={p} />
@@ -328,7 +331,7 @@ export default function ProductPage() {
           </div>
           <div className="product-page__related-footer">
             <button className="product-page__show-more" onClick={() => navigate('/shop')}>
-              Show More
+              Ver Mais
             </button>
           </div>
         </section>

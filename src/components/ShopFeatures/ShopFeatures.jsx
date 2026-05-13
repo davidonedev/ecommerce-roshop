@@ -10,8 +10,8 @@ const features = [
         <path d="M2 12l10 5 10-5" />
       </svg>
     ),
-    title: 'High Quality',
-    subtitle: 'crafted from top materials',
+    title: 'Alta Qualidade',
+    subtitle: 'feito com os melhores materiais',
   },
   {
     id: 2,
@@ -21,8 +21,8 @@ const features = [
         <polyline points="9 12 11 14 15 10" />
       </svg>
     ),
-    title: 'Warranty Protection',
-    subtitle: 'Over 2 years',
+    title: 'Garantia',
+    subtitle: 'Mais de 2 anos',
   },
   {
     id: 3,
@@ -34,8 +34,8 @@ const features = [
         <circle cx="18.5" cy="18.5" r="2.5" />
       </svg>
     ),
-    title: 'Free Shipping',
-    subtitle: 'Order over 150 $',
+    title: 'Frete Grátis',
+    subtitle: 'Pedidos acima de R$ 150',
   },
   {
     id: 4,
@@ -45,8 +45,8 @@ const features = [
         <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
       </svg>
     ),
-    title: '24 / 7 Support',
-    subtitle: 'Dedicated support',
+    title: 'Suporte 24/7',
+    subtitle: 'Atendimento dedicado',
   },
 ];
 

@@ -4,7 +4,12 @@ import { products } from '../../data/products';
 import './Products.scss';
 
 export function formatPrice(price) {
-  return `Rp ${price.toLocaleString('id-ID')}`;
+  return price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+}
+
+export function formatInstallment(price, times = 12) {
+  const val = price / times;
+  return val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
 export function ProductCard({ product }) {
@@ -35,20 +40,20 @@ export function ProductCard({ product }) {
             className="product-card__add-btn"
             onClick={(e) => { e.stopPropagation(); addItem(product, 1); }}
           >
-            Add to cart
+            Adicionar ao carrinho
           </button>
           <div className="product-card__actions">
             <button className="product-card__action" onClick={(e) => e.stopPropagation()}>
               <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-              Share
+              Compartilhar
             </button>
             <button className="product-card__action" onClick={(e) => e.stopPropagation()}>
               <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
-              Compare
+              Comparar
             </button>
             <button className="product-card__action" onClick={(e) => e.stopPropagation()}>
               <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-              Like
+              Curtir
             </button>
           </div>
         </div>
@@ -63,6 +68,9 @@ export function ProductCard({ product }) {
             <span className="product-card__old-price">{formatPrice(product.oldPrice)}</span>
           )}
         </div>
+        <p className="product-card__installment">
+          ou 12x de {formatInstallment(product.price)} sem juros
+        </p>
       </div>
     </div>
   );
@@ -72,7 +80,7 @@ export default function Products() {
   return (
     <section className="products" id="shop">
       <div className="products__header">
-        <h2 className="products__title">Our Products</h2>
+        <h2 className="products__title">Nossos Produtos</h2>
       </div>
 
       <div className="products__grid">
@@ -82,7 +90,7 @@ export default function Products() {
       </div>
 
       <div className="products__footer">
-        <button className="products__more-btn">Show More</button>
+        <button className="products__more-btn">Ver Mais</button>
       </div>
     </section>
   );

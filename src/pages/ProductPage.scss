@@ -145,6 +145,14 @@
     margin: 0;
   }
 
+  &__installment {
+    font-family: $font-primary;
+    font-size: 13px;
+    color: $medium;
+    font-weight: 400;
+    margin: 2px 0 0;
+  }
+
   &__rating-row {
     display: flex;
     align-items: center;

@@ -5,9 +5,9 @@ export default function BrowseRange() {
   return (
     <section className="browse">
       <div className="browse__header">
-        <h2 className="browse__title">Browse The Range</h2>
+        <h2 className="browse__title">Explore a Coleção</h2>
         <p className="browse__subtitle">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Encontre o estilo perfeito para cada ambiente da sua casa.
         </p>
       </div>
 

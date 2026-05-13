@@ -7,15 +7,15 @@ export default function Hero() {
       <div className="hero__overlay" />
 
       <div className="hero__card">
-        <span className="hero__tag">New Arrival</span>
+        <span className="hero__tag">Nova Coleção</span>
         <h1 className="hero__title">
-          Discover Our<br />New Collection
+          Descubra Nossa<br />Nova Coleção
         </h1>
         <p className="hero__desc">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,
-          luctus nec ullamcorper mattis.
+          Explore nossos móveis exclusivos e transforme cada ambiente da sua casa
+          em um espaço único e acolhedor.
         </p>
-        <button className="hero__btn">BUY NOW</button>
+        <button className="hero__btn">COMPRE AGORA</button>
       </div>
     </section>
   );

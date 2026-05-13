@@ -3,7 +3,7 @@ import { useCart } from '../../context/CartContext';
 import './CartSidebar.scss';
 
 function formatPrice(price) {
-  return `Rp ${price.toLocaleString('id-ID')}`;
+  return price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
 export default function CartSidebar() {
@@ -17,25 +17,22 @@ export default function CartSidebar() {
 
   return (
     <>
-      {/* Overlay */}
       <div
         className={`cart-overlay${isOpen ? ' cart-overlay--open' : ''}`}
         onClick={() => setIsOpen(false)}
         aria-hidden="true"
       />
 
-      {/* Sidebar */}
       <aside
         className={`cart-sidebar${isOpen ? ' cart-sidebar--open' : ''}`}
-        aria-label="Shopping Cart"
+        aria-label="Carrinho de Compras"
       >
-        {/* Header */}
         <div className="cart-sidebar__header">
-          <h2 className="cart-sidebar__title">Shopping Cart</h2>
+          <h2 className="cart-sidebar__title">Carrinho de Compras</h2>
           <button
             className="cart-sidebar__close"
             onClick={() => setIsOpen(false)}
-            aria-label="Close cart"
+            aria-label="Fechar carrinho"
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <line x1="18" y1="6" x2="6" y2="18" />
@@ -44,10 +41,9 @@ export default function CartSidebar() {
           </button>
         </div>
 
-        {/* Items */}
         <div className="cart-sidebar__items">
           {items.length === 0 ? (
-            <p className="cart-sidebar__empty">Your cart is empty.</p>
+            <p className="cart-sidebar__empty">Seu carrinho está vazio.</p>
           ) : (
             items.map((item) => (
               <div key={item.id} className="cart-sidebar__item">
@@ -65,7 +61,7 @@ export default function CartSidebar() {
                 <button
                   className="cart-sidebar__item-remove"
                   onClick={() => removeItem(item.id)}
-                  aria-label={`Remove ${item.name}`}
+                  aria-label={`Remover ${item.name}`}
                 >
                   &times;
                 </button>
@@ -74,7 +70,6 @@ export default function CartSidebar() {
           )}
         </div>
 
-        {/* Footer */}
         <div className="cart-sidebar__footer">
           <div className="cart-sidebar__subtotal">
             <span className="cart-sidebar__subtotal-label">Subtotal</span>
@@ -86,21 +81,21 @@ export default function CartSidebar() {
           <div className="cart-sidebar__actions">
             <button
               className="cart-sidebar__action-btn"
-              onClick={() => handleNavigate('/shop')}
+              onClick={() => handleNavigate('/cart')}
             >
-              Cart
+              Carrinho
             </button>
             <button
               className="cart-sidebar__action-btn"
-              onClick={() => handleNavigate('/shop')}
+              onClick={() => handleNavigate('/checkout')}
             >
-              Checkout
+              Finalizar
             </button>
             <button
               className="cart-sidebar__action-btn"
               onClick={() => setIsOpen(false)}
             >
-              Comparison
+              Comparar
             </button>
           </div>
         </div>

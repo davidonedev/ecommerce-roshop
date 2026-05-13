@@ -23,11 +23,18 @@ export function CartProvider({ children }) {
     setItems((prev) => prev.filter((i) => i.id !== id));
   }
 
+  function updateQty(id, qty) {
+    if (qty < 1) return;
+    setItems((prev) =>
+      prev.map((i) => (i.id === id ? { ...i, qty } : i))
+    );
+  }
+
   const totalCount = items.reduce((sum, i) => sum + i.qty, 0);
   const subtotal = items.reduce((sum, i) => sum + i.price * i.qty, 0);
 
   return (
-    <CartContext.Provider value={{ items, addItem, removeItem, isOpen, setIsOpen, totalCount, subtotal }}>
+    <CartContext.Provider value={{ items, addItem, removeItem, updateQty, isOpen, setIsOpen, totalCount, subtotal }}>
       {children}
     </CartContext.Provider>
   );
