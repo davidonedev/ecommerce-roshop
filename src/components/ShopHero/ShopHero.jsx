@@ -1,17 +1,24 @@
 import { Link } from 'react-router-dom';
-import './ShopHero.scss';
 
 export default function ShopHero() {
   return (
-    <section className="shop-hero">
-      <div className="shop-hero__content">
-        <h1 className="shop-hero__title">Loja</h1>
-        <nav className="shop-hero__breadcrumb" aria-label="Navegação">
-          <Link to="/" className="shop-hero__breadcrumb-home">Início</Link>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+    <section
+      className="relative h-[280px] bg-cover bg-center flex items-center justify-center"
+      style={{ backgroundImage: "url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1440&q=80')" }}
+    >
+      {/* White overlay */}
+      <div className="absolute inset-0" style={{ background: 'rgba(255,255,255,0.72)' }} />
+
+      <div className="relative flex flex-col items-center gap-2 text-center">
+        <h1 className="font-poppins text-[48px] font-bold text-dark leading-[1.1]">Loja</h1>
+        <nav className="flex items-center gap-1.5 font-poppins text-sm text-dark" aria-label="Navegação">
+          <Link to="/" className="font-semibold text-dark hover:text-primary transition-colors duration-200">
+            Início
+          </Link>
+          <svg className="w-3.5 h-3.5 text-medium" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
             <polyline points="9 18 15 12 9 6" />
           </svg>
-          <span>Loja</span>
+          <span className="text-medium font-light">Loja</span>
         </nav>
       </div>
     </section>

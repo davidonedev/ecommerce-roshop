@@ -1,13 +1,11 @@
-import './ShopFilter.scss';
-
 export default function ShopFilter({ total = 32, showing = 16, onShowChange, onSortChange }) {
   return (
-    <div className="shop-filter">
-      <div className="shop-filter__inner">
-        {/* Esquerda */}
-        <div className="shop-filter__left">
-          <button className="shop-filter__btn" aria-label="Filtrar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+    <div className="bg-cream py-5">
+      <div className="flex justify-between items-center flex-wrap gap-4 max-w-[1240px] mx-auto px-6">
+        {/* Left */}
+        <div className="flex items-center gap-5">
+          <button className="flex items-center gap-2 font-poppins text-lg font-medium text-dark transition-colors duration-200 hover:text-primary" aria-label="Filtrar">
+            <svg className="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <line x1="4" y1="6" x2="20" y2="6" />
               <line x1="8" y1="12" x2="20" y2="12" />
               <line x1="12" y1="18" x2="20" y2="18" />
@@ -18,17 +16,17 @@ export default function ShopFilter({ total = 32, showing = 16, onShowChange, onS
             Filtrar
           </button>
 
-          <div className="shop-filter__view-btns">
-            <button className="shop-filter__view-btn shop-filter__view-btn--active" aria-label="Grade">
-              <svg viewBox="0 0 24 24" fill="currentColor">
+          <div className="flex items-center gap-2">
+            <button className="text-dark p-1 flex items-center transition-colors duration-200 hover:text-dark" aria-label="Grade">
+              <svg className="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="currentColor">
                 <rect x="3" y="3" width="7" height="7" rx="1" />
                 <rect x="14" y="3" width="7" height="7" rx="1" />
                 <rect x="3" y="14" width="7" height="7" rx="1" />
                 <rect x="14" y="14" width="7" height="7" rx="1" />
               </svg>
             </button>
-            <button className="shop-filter__view-btn" aria-label="Lista">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <button className="text-medium p-1 flex items-center transition-colors duration-200 hover:text-dark" aria-label="Lista">
+              <svg className="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <line x1="3" y1="6" x2="21" y2="6" />
                 <line x1="3" y1="12" x2="21" y2="12" />
                 <line x1="3" y1="18" x2="21" y2="18" />
@@ -36,19 +34,19 @@ export default function ShopFilter({ total = 32, showing = 16, onShowChange, onS
             </button>
           </div>
 
-          <span className="shop-filter__separator" aria-hidden="true" />
+          <span className="block w-px h-8 bg-[#C4A8B2]" aria-hidden="true" />
 
-          <p className="shop-filter__results">
+          <p className="font-poppins text-base text-dark">
             Exibindo 1–{showing} de {total} resultados
           </p>
         </div>
 
-        {/* Direita */}
-        <div className="shop-filter__right">
-          <label className="shop-filter__label" htmlFor="show-count">Exibir</label>
+        {/* Right */}
+        <div className="flex items-center gap-3.5">
+          <label className="font-poppins text-lg font-medium text-dark" htmlFor="show-count">Exibir</label>
           <select
             id="show-count"
-            className="shop-filter__select shop-filter__select--count"
+            className="w-[68px] font-poppins text-base text-dark bg-white border-0 px-4 py-2.5 cursor-pointer focus:outline-primary focus:outline-2 focus:outline-offset-2"
             defaultValue={showing}
             onChange={(e) => onShowChange?.(Number(e.target.value))}
           >
@@ -57,10 +55,10 @@ export default function ShopFilter({ total = 32, showing = 16, onShowChange, onS
             ))}
           </select>
 
-          <label className="shop-filter__label" htmlFor="sort-by">Ordenar por</label>
+          <label className="font-poppins text-lg font-medium text-dark" htmlFor="sort-by">Ordenar por</label>
           <select
             id="sort-by"
-            className="shop-filter__select shop-filter__select--sort"
+            className="w-[160px] font-poppins text-base text-dark bg-white border-0 px-4 py-2.5 cursor-pointer focus:outline-primary focus:outline-2 focus:outline-offset-2"
             defaultValue="default"
             onChange={(e) => onSortChange?.(e.target.value)}
           >

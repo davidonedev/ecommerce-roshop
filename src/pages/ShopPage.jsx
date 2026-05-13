@@ -6,7 +6,6 @@ import ShopFeatures from '../components/ShopFeatures/ShopFeatures';
 import Footer from '../components/Footer/Footer';
 import { ProductCard } from '../components/Products/Products';
 import { products } from '../data/products';
-import './ShopPage.scss';
 
 const ITEMS_PER_PAGE = 16;
 
@@ -28,18 +27,22 @@ export default function ShopPage() {
         <ShopHero />
         <ShopFilter total={shopProducts.length} showing={visible.length} />
 
-        <section className="shop-grid">
-          <div className="shop-grid__inner">
+        <section className="py-20 bg-white">
+          <div className="grid grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-6 max-w-[1240px] mx-auto px-6 max-sm:max-w-[380px] max-sm:mx-auto">
             {visible.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
 
-          <div className="shop-pagination">
+          <div className="flex items-center justify-center gap-4 mt-12">
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
               <button
                 key={page}
-                className={`shop-pagination__btn${currentPage === page ? ' shop-pagination__btn--active' : ''}`}
+                className={`min-w-[56px] h-14 px-3 font-poppins text-lg rounded transition-all duration-200 ${
+                  currentPage === page
+                    ? 'bg-primary text-white font-semibold'
+                    : 'bg-[#FFE8EC] text-dark hover:bg-primary hover:text-white'
+                }`}
                 onClick={() => { setCurrentPage(page); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               >
                 {page}
@@ -47,7 +50,7 @@ export default function ShopPage() {
             ))}
             {currentPage < totalPages && (
               <button
-                className="shop-pagination__btn shop-pagination__btn--next"
+                className="min-w-[56px] h-14 px-3 bg-[#FFE8EC] text-dark font-poppins text-lg rounded hover:bg-primary hover:text-white transition-all duration-200"
                 onClick={() => { setCurrentPage((p) => p + 1); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               >
                 Next

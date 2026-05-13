@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './styles/global.scss';
 import { CartProvider } from './context/CartContext';
 import ScrollToTop from './components/ScrollToTop';
 import CartSidebar from './components/CartSidebar/CartSidebar';

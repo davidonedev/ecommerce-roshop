@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import ShopFeatures from '../components/ShopFeatures/ShopFeatures';
 import Footer from '../components/Footer/Footer';
-import './ContactPage.scss';
 
 const contactInfo = [
   {
@@ -61,88 +60,99 @@ export default function ContactPage() {
       <main style={{ paddingTop: '100px' }}>
 
         {/* ── Hero ── */}
-        <section className="contact-hero">
-          <div className="contact-hero__content">
-            <svg className="contact-hero__logo-icon" viewBox="0 0 40 40" fill="none">
-              <path d="M5 32 L20 8 L35 32" stroke="#B88E2F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-              <path d="M10 24 L30 24" stroke="#B88E2F" strokeWidth="2.5" strokeLinecap="round"/>
+        <section
+          className="relative h-[280px] bg-cover bg-center flex items-center justify-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1440&q=80')" }}
+        >
+          <div className="absolute inset-0" style={{ background: 'rgba(255,255,255,0.72)' }} />
+          <div className="relative flex flex-col items-center gap-1 text-center">
+            <svg className="w-14 h-14 mb-2" viewBox="0 0 40 40" fill="none">
+              <path d="M5 32 L20 8 L35 32" stroke="#AC274F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              <path d="M10 24 L30 24" stroke="#AC274F" strokeWidth="2.5" strokeLinecap="round"/>
             </svg>
-            <h1 className="contact-hero__title">Contato</h1>
-            <nav className="contact-hero__breadcrumb" aria-label="Navegação">
-              <Link to="/" className="contact-hero__bc-link">Início</Link>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <h1 className="font-poppins text-[48px] font-bold text-dark leading-[1.1]">Contato</h1>
+            <nav className="flex items-center gap-1.5 font-poppins text-sm mt-1" aria-label="Navegação">
+              <Link to="/" className="font-semibold text-dark hover:text-primary transition-colors duration-200">Início</Link>
+              <svg className="w-3.5 h-3.5 text-medium" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
                 <polyline points="9 18 15 12 9 6"/>
               </svg>
-              <span>Contato</span>
+              <span className="text-medium font-light">Contato</span>
             </nav>
           </div>
         </section>
 
-        {/* ── Introdução ── */}
-        <section className="contact-intro">
-          <h2 className="contact-intro__title">Entre em Contato Conosco</h2>
-          <p className="contact-intro__text">
+        {/* ── Intro ── */}
+        <section className="py-[72px] pb-14 text-center px-6">
+          <h2 className="font-poppins text-[36px] font-bold text-dark mb-4">Entre em Contato Conosco</h2>
+          <p className="font-poppins text-sm text-medium leading-[1.8] max-w-[540px] mx-auto">
             Para mais informações sobre nossos produtos e serviços, sinta-se à vontade para<br />
             nos enviar uma mensagem. Nossa equipe está sempre pronta para ajudá-lo!
           </p>
         </section>
 
-        {/* ── Principal ── */}
-        <section className="contact-main">
-          <div className="contact-main__inner">
+        {/* ── Main ── */}
+        <section className="pb-24 bg-white">
+          <div className="grid grid-cols-[340px_1fr] max-lg:grid-cols-1 gap-20 max-lg:gap-14 max-w-[1240px] mx-auto px-6 items-start">
 
-            {/* Esquerda — Informações */}
-            <div className="contact-info">
+            {/* Contact Info */}
+            <div className="flex flex-col gap-12 pt-2">
               {contactInfo.map((item) => (
-                <div key={item.id} className="contact-info__item">
-                  <span className="contact-info__icon" aria-hidden="true">
-                    {item.icon}
+                <div key={item.id} className="flex items-start gap-6">
+                  <span className="flex-shrink-0 w-7 h-7 mt-0.5 flex items-center justify-center text-dark" aria-hidden="true">
+                    <span className="w-7 h-7 block">{item.icon}</span>
                   </span>
-                  <div className="contact-info__body">
-                    <h3 className="contact-info__title">{item.title}</h3>
+                  <div className="flex flex-col gap-1.5">
+                    <h3 className="font-poppins text-xl font-semibold text-dark mb-2">{item.title}</h3>
                     {item.lines.map((line, i) => (
-                      <p key={i} className="contact-info__line">{line}</p>
+                      <p key={i} className="font-poppins text-sm text-medium leading-[1.6]">{line}</p>
                     ))}
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Direita — Formulário */}
-            <form className="contact-form" onSubmit={handleSubmit} noValidate>
+            {/* Form */}
+            <form className="flex flex-col gap-7" onSubmit={handleSubmit} noValidate>
 
-              <div className="contact-form__field">
-                <label className="contact-form__label" htmlFor="name">Seu nome</label>
-                <input id="name" name="name" type="text" className="contact-form__input"
+              <div className="flex flex-col gap-2.5">
+                <label className="font-poppins text-sm font-medium text-dark" htmlFor="name">Seu nome</label>
+                <input id="name" name="name" type="text"
+                  className="h-[52px] border border-[#9F9F9F] rounded-md px-[18px] font-poppins text-sm text-dark bg-white placeholder:text-light focus:outline-none focus:border-primary transition-colors duration-200"
                   placeholder="Ex: João Silva" value={form.name} onChange={handleChange} required />
               </div>
 
-              <div className="contact-form__field">
-                <label className="contact-form__label" htmlFor="email">E-mail</label>
-                <input id="email" name="email" type="email" className="contact-form__input"
+              <div className="flex flex-col gap-2.5">
+                <label className="font-poppins text-sm font-medium text-dark" htmlFor="email">E-mail</label>
+                <input id="email" name="email" type="email"
+                  className="h-[52px] border border-[#9F9F9F] rounded-md px-[18px] font-poppins text-sm text-dark bg-white placeholder:text-light focus:outline-none focus:border-primary transition-colors duration-200"
                   placeholder="exemplo@email.com" value={form.email} onChange={handleChange} required />
               </div>
 
-              <div className="contact-form__field">
-                <label className="contact-form__label" htmlFor="subject">Assunto</label>
-                <input id="subject" name="subject" type="text" className="contact-form__input"
+              <div className="flex flex-col gap-2.5">
+                <label className="font-poppins text-sm font-medium text-dark" htmlFor="subject">Assunto</label>
+                <input id="subject" name="subject" type="text"
+                  className="h-[52px] border border-[#9F9F9F] rounded-md px-[18px] font-poppins text-sm text-dark bg-white placeholder:text-light focus:outline-none focus:border-primary transition-colors duration-200"
                   placeholder="Opcional" value={form.subject} onChange={handleChange} />
               </div>
 
-              <div className="contact-form__field">
-                <label className="contact-form__label" htmlFor="message">Mensagem</label>
-                <textarea id="message" name="message" className="contact-form__textarea"
+              <div className="flex flex-col gap-2.5">
+                <label className="font-poppins text-sm font-medium text-dark" htmlFor="message">Mensagem</label>
+                <textarea id="message" name="message"
+                  className="border border-[#9F9F9F] rounded-md px-[18px] py-3.5 font-poppins text-sm text-dark bg-white resize-y min-h-[120px] placeholder:text-light focus:outline-none focus:border-primary transition-colors duration-200"
                   placeholder="Olá! Gostaria de saber mais sobre..." rows={5}
                   value={form.message} onChange={handleChange} required />
               </div>
 
               {sent && (
-                <p className="contact-form__success">
+                <p className="font-poppins text-sm text-primary-light font-medium">
                   Mensagem enviada! Entraremos em contato em breve.
                 </p>
               )}
 
-              <button type="submit" className="contact-form__submit">
+              <button
+                type="submit"
+                className="self-start h-[52px] px-20 bg-primary text-white border-0 rounded font-poppins text-base font-medium tracking-[0.04em] hover:bg-primary-dark transition-colors duration-[250ms]"
+              >
                 Enviar
               </button>
             </form>

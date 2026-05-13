@@ -3,7 +3,6 @@ import Header from '../components/Header/Header';
 import ShopFeatures from '../components/ShopFeatures/ShopFeatures';
 import Footer from '../components/Footer/Footer';
 import { useCart } from '../context/CartContext';
-import './CartPage.scss';
 
 function formatPrice(price) {
   return price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -30,83 +29,87 @@ export default function CartPage() {
       <main style={{ paddingTop: '100px' }}>
 
         {/* ── Hero ── */}
-        <section className="cart-hero">
-          <div className="cart-hero__content">
-            <svg className="cart-hero__logo-icon" viewBox="0 0 40 40" fill="none">
-              <path d="M5 32 L20 8 L35 32" stroke="#B88E2F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-              <path d="M10 24 L30 24" stroke="#B88E2F" strokeWidth="2.5" strokeLinecap="round"/>
+        <section
+          className="relative h-[280px] bg-cover bg-center flex items-center justify-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1440&q=80')" }}
+        >
+          <div className="absolute inset-0" style={{ background: 'rgba(255,255,255,0.72)' }} />
+          <div className="relative flex flex-col items-center gap-1 text-center">
+            <svg className="w-14 h-14 mb-2" viewBox="0 0 40 40" fill="none">
+              <path d="M5 32 L20 8 L35 32" stroke="#AC274F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              <path d="M10 24 L30 24" stroke="#AC274F" strokeWidth="2.5" strokeLinecap="round"/>
             </svg>
-            <h1 className="cart-hero__title">Carrinho</h1>
-            <nav className="cart-hero__breadcrumb" aria-label="Navegação">
-              <Link to="/" className="cart-hero__bc-link">Início</Link>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <h1 className="font-poppins text-[48px] font-bold text-dark leading-[1.1]">Carrinho</h1>
+            <nav className="flex items-center gap-1.5 font-poppins text-sm mt-1" aria-label="Navegação">
+              <Link to="/" className="font-semibold text-dark hover:text-primary transition-colors duration-200">Início</Link>
+              <svg className="w-3.5 h-3.5 text-medium" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
                 <polyline points="9 18 15 12 9 6" />
               </svg>
-              <span>Carrinho</span>
+              <span className="text-medium font-light">Carrinho</span>
             </nav>
           </div>
         </section>
 
-        {/* ── Conteúdo ── */}
-        <section className="cart-page">
-          <div className="cart-page__inner">
+        {/* ── Cart Content ── */}
+        <section className="py-20 bg-white">
+          <div className="grid grid-cols-[1fr_380px] max-xl:grid-cols-1 gap-8 max-w-[1240px] mx-auto px-6 items-start">
 
-            <div className="cart-page__table-wrap">
+            <div className="min-w-0">
               {items.length === 0 ? (
-                <div className="cart-page__empty">
-                  <p>Seu carrinho está vazio.</p>
+                <div className="text-center py-16 px-6 font-poppins">
+                  <p className="text-lg text-medium mb-6">Seu carrinho está vazio.</p>
                   <button
-                    className="cart-page__shop-btn"
+                    className="font-poppins text-sm tracking-[0.04em] px-12 py-3.5 border border-dark text-dark hover:bg-dark hover:text-white transition-all duration-200"
                     onClick={() => navigate('/shop')}
                   >
                     Continuar Comprando
                   </button>
                 </div>
               ) : (
-                <table className="cart-table">
-                  <thead className="cart-table__head">
+                <table className="w-full border-collapse">
+                  <thead className="bg-cream">
                     <tr>
-                      <th className="cart-table__th" colSpan={2}>Produto</th>
-                      <th className="cart-table__th">Preço</th>
-                      <th className="cart-table__th">Quantidade</th>
-                      <th className="cart-table__th">Subtotal</th>
-                      <th className="cart-table__th" />
+                      <th className="font-poppins text-base font-semibold text-dark py-5 px-5 text-left pl-6" colSpan={2}>Produto</th>
+                      <th className="font-poppins text-base font-semibold text-dark py-5 px-5 text-left">Preço</th>
+                      <th className="font-poppins text-base font-semibold text-dark py-5 px-5 text-left">Quantidade</th>
+                      <th className="font-poppins text-base font-semibold text-dark py-5 px-5 text-left">Subtotal</th>
+                      <th className="font-poppins text-base font-semibold text-dark py-5 px-5 pr-6" />
                     </tr>
                   </thead>
                   <tbody>
                     {items.map((item) => (
-                      <tr key={item.id} className="cart-table__row">
-                        <td className="cart-table__td cart-table__td--img">
-                          <div className="cart-table__img-wrap">
-                            <img src={item.image} alt={item.name} loading="lazy" />
+                      <tr key={item.id} className="border-b border-[#F0EBE3] last:border-0">
+                        <td className="py-6 pl-6 pr-4 align-middle w-[110px]">
+                          <div className="w-[105px] h-[105px] bg-[#FFE8EC] rounded-lg overflow-hidden flex-shrink-0">
+                            <img src={item.image} alt={item.name} className="w-full h-full object-cover block" loading="lazy" />
                           </div>
                         </td>
-                        <td className="cart-table__td cart-table__td--name">
+                        <td className="py-6 px-5 align-middle font-poppins text-base text-dark whitespace-nowrap">
                           {item.name}
                         </td>
-                        <td className="cart-table__td cart-table__td--price">
+                        <td className="py-6 px-5 align-middle font-poppins text-base text-medium whitespace-nowrap">
                           {formatPrice(item.price)}
                         </td>
-                        <td className="cart-table__td cart-table__td--qty">
+                        <td className="py-6 px-5 align-middle w-[90px]">
                           <input
                             type="number"
-                            className="cart-table__qty-input"
+                            className="w-[72px] h-11 border border-[#9F9F9F] rounded text-center font-poppins text-base text-dark bg-white px-2 focus:outline-none focus:border-primary [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                             value={item.qty}
                             min={1}
                             onChange={(e) => updateQty(item.id, Number(e.target.value))}
                             aria-label={`Quantidade de ${item.name}`}
                           />
                         </td>
-                        <td className="cart-table__td cart-table__td--subtotal">
+                        <td className="py-6 px-5 align-middle font-poppins text-base text-dark whitespace-nowrap">
                           {formatPrice(item.price * item.qty)}
                         </td>
-                        <td className="cart-table__td cart-table__td--delete">
+                        <td className="py-6 pr-6 px-5 align-middle w-12">
                           <button
-                            className="cart-table__delete-btn"
+                            className="text-primary flex items-center p-1 hover:text-red-600 transition-colors duration-200"
                             onClick={() => removeItem(item.id)}
                             aria-label={`Remover ${item.name}`}
                           >
-                            <TrashIcon />
+                            <span className="w-[22px] h-[22px]"><TrashIcon /></span>
                           </button>
                         </td>
                       </tr>
@@ -117,25 +120,23 @@ export default function CartPage() {
             </div>
 
             {items.length > 0 && (
-              <div className="cart-totals">
-                <h2 className="cart-totals__title">Total do Carrinho</h2>
+              <div className="bg-cream px-10 py-9 rounded-sm">
+                <h2 className="font-poppins text-[28px] font-bold text-dark mb-7 text-center">Total do Carrinho</h2>
 
-                <div className="cart-totals__row">
-                  <span className="cart-totals__label">Subtotal</span>
-                  <span className="cart-totals__value">{formatPrice(subtotal)}</span>
+                <div className="flex items-start justify-between gap-4 py-3">
+                  <span className="font-poppins text-base font-medium text-dark">Subtotal</span>
+                  <span className="font-poppins text-base text-medium">{formatPrice(subtotal)}</span>
                 </div>
 
-                <div className="cart-totals__divider" />
+                <div className="h-px bg-[#E8D0D4] my-2" />
 
-                <div className="cart-totals__row">
-                  <span className="cart-totals__label">Total</span>
-                  <span className="cart-totals__value cart-totals__value--total">
-                    {formatPrice(subtotal)}
-                  </span>
+                <div className="flex items-start justify-between gap-4 py-3">
+                  <span className="font-poppins text-base font-medium text-dark">Total</span>
+                  <span className="font-poppins text-xl font-semibold text-primary">{formatPrice(subtotal)}</span>
                 </div>
 
                 <button
-                  className="cart-totals__checkout-btn"
+                  className="w-full h-[58px] bg-white text-dark border border-dark rounded-md font-poppins text-lg font-medium mt-8 tracking-[0.02em] hover:bg-dark hover:text-white transition-all duration-[250ms]"
                   onClick={() => navigate('/checkout')}
                 >
                   Finalizar Compra
