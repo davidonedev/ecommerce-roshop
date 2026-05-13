@@ -1,0 +1,65 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.shop-hero {
+  position: relative;
+  height: 280px;
+  background-image: url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1440&q=80');
+  background-size: cover;
+  background-position: center;
+  @include flex-center;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.72);
+  }
+
+  &__content {
+    position: relative;
+    text-align: center;
+    @include flex-center;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    font-family: $font-primary;
+    font-size: 48px;
+    font-weight: 700;
+    color: $dark;
+    line-height: 1.1;
+  }
+
+  &__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: $font-primary;
+    font-size: 14px;
+    color: $dark;
+
+    svg {
+      width: 14px;
+      height: 14px;
+      stroke-width: 2.5;
+      color: $medium;
+    }
+
+    span {
+      color: $medium;
+      font-weight: 300;
+    }
+  }
+
+  &__breadcrumb-home {
+    font-weight: 600;
+    color: $dark;
+    text-decoration: none;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}

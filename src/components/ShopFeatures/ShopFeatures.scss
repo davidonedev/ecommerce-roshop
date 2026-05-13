@@ -1,0 +1,60 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.shop-features {
+  background: #FAF3EA;
+  padding: 80px 0;
+
+  &__inner {
+    @include container;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-to(sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 56px;
+      height: 56px;
+      stroke-width: 1.5;
+      color: $dark;
+    }
+  }
+
+  &__title {
+    font-family: $font-primary;
+    font-size: 22px;
+    font-weight: 700;
+    color: $dark;
+    margin-bottom: 4px;
+  }
+
+  &__subtitle {
+    font-family: $font-primary;
+    font-size: 14px;
+    color: $medium;
+    margin: 0;
+    font-weight: 400;
+  }
+}
