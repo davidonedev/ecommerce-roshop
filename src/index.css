@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Poppins', sans-serif; color: #191516; }
+  a { text-decoration: none; }
+  button { border: none; background: none; cursor: pointer; }
+  img { display: block; max-width: 100%; }
+}
+
+@layer utilities {
+  .browse-card:hover .browse-img { transform: scale(1.06); }
+  .gallery-item:hover .gallery-img { transform: scale(1.06); }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .product-card:hover .product-overlay { opacity: 1; }
+  .product-card:hover .product-img { transform: scale(1.04); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateY(-50%) translateX(40px); }
+  to   { opacity: 1; transform: translateY(-50%) translateX(0); }
+}
+
+@keyframes slideInSidebar {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}

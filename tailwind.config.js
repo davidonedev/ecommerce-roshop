@@ -8,14 +8,14 @@ export default {
         montserrat: ['Montserrat', 'sans-serif'],
       },
       colors: {
-        primary: '#B88E2F',
-        'primary-light': '#DCB95A',
-        'primary-dark': '#9A7420',
-        dark: '#333333',
-        medium: '#666666',
-        light: '#999999',
-        cream: '#FCF8F3',
-        'cream-dark': '#F4EEDC',
+        primary: '#AC274F',
+        'primary-light': '#EB638B',
+        'primary-dark': '#8B1F3F',
+        dark: '#191516',
+        medium: '#6B5760',
+        light: '#B09098',
+        cream: '#FFD9DA',
+        'cream-dark': '#F5B8C4',
       },
       maxWidth: {
         '8xl': '1440px',
@@ -28,4 +28,3 @@ export default {
   },
   plugins: [],
 };
-

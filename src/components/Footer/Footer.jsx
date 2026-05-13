@@ -1,32 +1,32 @@
-import './Footer.scss';
+import { Link } from 'react-router-dom';
 
 const links = [
-  { label: 'Home', href: '#' },
-  { label: 'Shop', href: '#shop' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Início', to: '/' },
+  { label: 'Loja', to: '/shop' },
+  { label: 'Sobre', to: '#about' },
+  { label: 'Contato', to: '/contact' },
 ];
 
 const help = [
-  { label: 'Payment Options', href: '#' },
-  { label: 'Returns', href: '#' },
-  { label: 'Privacy Policies', href: '#' },
+  { label: 'Formas de Pagamento', href: '#' },
+  { label: 'Trocas e Devoluções', href: '#' },
+  { label: 'Política de Privacidade', href: '#' },
 ];
 
 export default function Footer() {
   return (
-    <footer className="footer">
-      <div className="footer__main">
+    <footer className="bg-white border-t border-[#E8D0D4]">
+      <div className="grid grid-cols-[2fr_1fr_1fr_2fr] max-lg:grid-cols-2 max-sm:grid-cols-1 gap-10 max-w-[1240px] mx-auto px-6 py-[72px] max-sm:py-12">
         {/* Brand */}
-        <div className="footer__brand">
-          <a href="#" className="footer__logo">
+        <div className="max-w-[280px]">
+          <Link to="/" className="flex items-center gap-1.5 mb-7">
             <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
-              <path d="M5 32 L20 8 L35 32" stroke="#B88E2F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-              <path d="M10 24 L30 24" stroke="#B88E2F" strokeWidth="2.5" strokeLinecap="round"/>
+              <path d="M5 32 L20 8 L35 32" stroke="#AC274F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              <path d="M10 24 L30 24" stroke="#AC274F" strokeWidth="2.5" strokeLinecap="round"/>
             </svg>
-            <span className="footer__logo-text">Funiro.</span>
-          </a>
-          <address className="footer__address">
+            <span className="font-poppins text-2xl font-bold text-dark">Funiro.</span>
+          </Link>
+          <address className="font-poppins text-sm text-light leading-[1.8] not-italic">
             400 University Drive Suite 200 Coral<br />
             Gables,<br />
             FL 33134 USA
@@ -35,11 +35,13 @@ export default function Footer() {
 
         {/* Links */}
         <div>
-          <p className="footer__col-title">Links</p>
-          <ul className="footer__col-links">
+          <p className="font-poppins text-base font-semibold text-light mb-7 capitalize tracking-[0.02em]">Links</p>
+          <ul className="flex flex-col gap-[18px]">
             {links.map((l) => (
               <li key={l.label}>
-                <a href={l.href} className="footer__col-link">{l.label}</a>
+                <Link to={l.to} className="font-poppins text-sm text-dark font-medium transition-colors duration-200 hover:text-primary">
+                  {l.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -47,11 +49,13 @@ export default function Footer() {
 
         {/* Help */}
         <div>
-          <p className="footer__col-title">Help</p>
-          <ul className="footer__col-links">
+          <p className="font-poppins text-base font-semibold text-light mb-7 capitalize tracking-[0.02em]">Ajuda</p>
+          <ul className="flex flex-col gap-[18px]">
             {help.map((l) => (
               <li key={l.label}>
-                <a href={l.href} className="footer__col-link">{l.label}</a>
+                <a href={l.href} className="font-poppins text-sm text-dark font-medium transition-colors duration-200 hover:text-primary">
+                  {l.label}
+                </a>
               </li>
             ))}
           </ul>
@@ -59,28 +63,30 @@ export default function Footer() {
 
         {/* Newsletter */}
         <div>
-          <p className="footer__col-title">Newsletter</p>
+          <p className="font-poppins text-base font-semibold text-light mb-7 capitalize tracking-[0.02em]">Newsletter</p>
           <form
-            className="footer__newsletter-form"
+            className="flex gap-2"
             onSubmit={(e) => e.preventDefault()}
           >
             <input
               type="email"
-              placeholder="Enter Your Email Address"
-              className="footer__newsletter-input"
-              aria-label="Email for newsletter"
+              placeholder="Digite seu e-mail"
+              className="flex-1 border-0 border-b border-b-dark pb-2 font-poppins text-[13px] text-dark outline-none bg-transparent min-w-0 placeholder:text-light focus:border-b-primary transition-colors duration-200"
+              aria-label="E-mail para newsletter"
             />
-            <button type="submit" className="footer__newsletter-btn">
-              Subscribe
+            <button
+              type="submit"
+              className="border-0 border-b border-b-dark font-poppins text-[13px] font-semibold text-dark tracking-[0.06em] pb-2 uppercase whitespace-nowrap hover:text-primary hover:border-b-primary transition-colors duration-200"
+            >
+              Assinar
             </button>
           </form>
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="footer__bottom">
-        <p className="footer__copyright">
-          2023 furino. All rights reserved
+      <div className="border-t border-[#E8D0D4] py-7 px-6 max-w-[1240px] mx-auto">
+        <p className="font-poppins text-[13px] text-medium font-medium">
+          2023 Funiro. Todos os direitos reservados
         </p>
       </div>
     </footer>
