@@ -5,6 +5,7 @@ import ShopFeatures from '../components/ShopFeatures/ShopFeatures';
 import Footer from '../components/Footer/Footer';
 import { ProductCard, formatPrice } from '../components/Products/Products';
 import { products } from '../data/products';
+import { useCart } from '../context/CartContext';
 import './ProductPage.scss';
 
 // ── Star Rating ───────────────────────────────────────────────────────────────
@@ -38,6 +39,7 @@ function StarRating({ rating }) {
 export default function ProductPage() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { addItem } = useCart();
   const product = products.find((p) => p.id === Number(id));
 
   const [activeImg, setActiveImg] = useState(0);
@@ -178,7 +180,12 @@ export default function ProductPage() {
                     +
                   </button>
                 </div>
-                <button className="product-page__add-btn">Add To Cart</button>
+                <button
+                  className="product-page__add-btn"
+                  onClick={() => addItem(product, qty)}
+                >
+                  Add To Cart
+                </button>
                 <button className="product-page__compare-btn">+ Compare</button>
               </div>
 

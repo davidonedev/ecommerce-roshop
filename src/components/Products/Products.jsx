@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { useCart } from '../../context/CartContext';
 import { products } from '../../data/products';
 import './Products.scss';
 
@@ -8,6 +9,7 @@ export function formatPrice(price) {
 
 export function ProductCard({ product }) {
   const navigate = useNavigate();
+  const { addItem } = useCart();
 
   return (
     <div
@@ -31,7 +33,7 @@ export function ProductCard({ product }) {
         <div className="product-card__overlay">
           <button
             className="product-card__add-btn"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) => { e.stopPropagation(); addItem(product, 1); }}
           >
             Add to cart
           </button>
