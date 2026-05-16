@@ -66,6 +66,7 @@ export default function CartPage() {
                   </button>
                 </div>
               ) : (
+                <>
                 {/* ── Mobile card list ── */}
                 <div className="sm:hidden flex flex-col divide-y divide-[#F0EBE3]">
                   {items.map((item) => (
@@ -144,6 +145,7 @@ export default function CartPage() {
                     ))}
                   </tbody>
                 </table>
+                </>
               )}
             </div>
 

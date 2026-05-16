@@ -19,7 +19,7 @@ export default function Hero() {
       />
 
       {/* ── Card MOBILE: centralizado, sem animação ── */}
-      <div className="md:hidden absolute inset-x-5 top-1/2 -translate-y-1/2 bg-white/92 backdrop-blur-sm p-7 text-center flex flex-col items-center">
+      <div className="md:hidden absolute inset-x-5 top-1/2 -translate-y-1/2 bg-white p-7 text-center flex flex-col items-center">
         <span className="font-poppins text-[11px] font-bold tracking-[0.16em] text-primary uppercase mb-3 block">
           Nova Coleção
         </span>
