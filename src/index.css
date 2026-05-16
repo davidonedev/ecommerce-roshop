@@ -15,8 +15,28 @@
   .browse-card:hover .browse-img { transform: scale(1.06); }
   .gallery-item:hover .gallery-img { transform: scale(1.06); }
   .gallery-item:hover .gallery-overlay { opacity: 1; }
-  .product-card:hover .product-overlay { opacity: 1; }
+  @media (min-width: 640px) {
+    .product-card:hover .product-overlay { opacity: 1; }
+  }
   .product-card:hover .product-img { transform: scale(1.04); }
+}
+
+/* Responsive header offset for all pages */
+.main-pad { padding-top: 72px; }
+@media (min-width: 640px) { .main-pad { padding-top: 100px; } }
+
+/* Gallery grid — inline styles can't respond to breakpoints, so we override here */
+.gallery-grid {
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 280px);
+}
+@media (max-width: 1023px) {
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); grid-template-rows: auto; }
+}
+@media (max-width: 639px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
+  /* disable tall items on mobile */
+  .gallery-grid .row-span-2 { grid-row: span 1 / span 1; }
 }
 
 @keyframes slideInRight {

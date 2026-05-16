@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 export default function ShopHero() {
   return (
     <section
-      className="relative h-[280px] bg-cover bg-center flex items-center justify-center"
+      className="relative h-[180px] sm:h-[280px] bg-cover bg-center flex items-center justify-center"
       style={{ backgroundImage: "url('https://images.unsplash.com/photo-1445205170230-053b83016050?w=1440&q=80')" }}
     >
       {/* White overlay */}
       <div className="absolute inset-0" style={{ background: 'rgba(255,255,255,0.72)' }} />
 
       <div className="relative flex flex-col items-center gap-2 text-center">
-        <h1 className="font-poppins text-[48px] font-bold text-dark leading-[1.1]">Loja</h1>
+        <h1 className="font-poppins text-3xl sm:text-[48px] font-bold text-dark leading-[1.1]">Loja</h1>
         <nav className="flex items-center gap-1.5 font-poppins text-sm text-dark" aria-label="Navegação">
           <Link to="/" className="font-semibold text-dark hover:text-primary transition-colors duration-200">
             Início

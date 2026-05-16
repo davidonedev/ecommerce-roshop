@@ -27,7 +27,7 @@ export default function CartSidebar() {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 right-0 w-[420px] h-screen bg-white z-[200] flex flex-col shadow-xl transition-transform duration-300 ${
+        className={`fixed top-0 right-0 w-full sm:w-[420px] h-screen bg-white z-[200] flex flex-col shadow-xl transition-transform duration-300 ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         aria-label="Carrinho de Compras"
@@ -86,21 +86,21 @@ export default function CartSidebar() {
 
           <div className="h-px bg-[#E8D0D4] mb-6" />
 
-          <div className="flex gap-3">
+          <div className="flex flex-col sm:flex-row gap-3">
             <button
-              className="flex-1 h-11 bg-dark text-white border border-dark rounded-full font-poppins text-sm transition-all duration-200 hover:bg-black"
+              className="flex-1 h-11 sm:h-11 bg-dark text-white border border-dark rounded-full font-poppins text-sm transition-all duration-200 hover:bg-black"
               onClick={() => handleNavigate('/cart')}
             >
               Carrinho
             </button>
             <button
-              className="flex-1 h-11 bg-dark text-white border border-dark rounded-full font-poppins text-sm transition-all duration-200 hover:bg-black"
+              className="flex-1 h-11 sm:h-11 bg-dark text-white border border-dark rounded-full font-poppins text-sm transition-all duration-200 hover:bg-black"
               onClick={() => handleNavigate('/checkout')}
             >
               Finalizar
             </button>
             <button
-              className="flex-1 h-11 bg-dark text-white border border-dark rounded-full font-poppins text-sm transition-all duration-200 hover:bg-black"
+              className="flex-1 h-11 sm:h-11 bg-dark text-white border border-dark rounded-full font-poppins text-sm transition-all duration-200 hover:bg-black"
               onClick={() => setIsOpen(false)}
             >
               Comparar
