@@ -26,12 +26,12 @@ export default function CartPage() {
   return (
     <>
       <Header />
-      <main style={{ paddingTop: '100px' }}>
+      <main className="main-pad">
 
         {/* ── Hero ── */}
         <section
-          className="relative h-[280px] bg-cover bg-center flex items-center justify-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1440&q=80')" }}
+          className="relative h-[180px] sm:h-[280px] bg-cover bg-center flex items-center justify-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1445205170230-053b83016050?w=1440&q=80')" }}
         >
           <div className="absolute inset-0" style={{ background: 'rgba(255,255,255,0.72)' }} />
           <div className="relative flex flex-col items-center gap-1 text-center">
@@ -39,7 +39,7 @@ export default function CartPage() {
               <path d="M 8 6 L 8 34" stroke="#AC274F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
               <path d="M 8 6 L 20 6 C 31 6 31 20 20 20 L 8 20 M 8 20 L 22 20 C 34 20 34 34 22 34 L 8 34" stroke="#AC274F" strokeWidth="2.5" strokeLinecap="round"/>
             </svg>
-            <h1 className="font-poppins text-[48px] font-bold text-dark leading-[1.1]">Carrinho</h1>
+            <h1 className="font-poppins text-3xl sm:text-[48px] font-bold text-dark leading-[1.1]">Carrinho</h1>
             <nav className="flex items-center gap-1.5 font-poppins text-sm mt-1" aria-label="Navegação">
               <Link to="/" className="font-semibold text-dark hover:text-primary transition-colors duration-200">Início</Link>
               <svg className="w-3.5 h-3.5 text-medium" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
@@ -52,7 +52,7 @@ export default function CartPage() {
 
         {/* ── Cart Content ── */}
         <section className="py-20 bg-white">
-          <div className="grid grid-cols-[1fr_380px] max-xl:grid-cols-1 gap-8 max-w-[1240px] mx-auto px-6 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8 max-w-[1240px] mx-auto px-4 sm:px-6 items-start">
 
             <div className="min-w-0">
               {items.length === 0 ? (
@@ -66,7 +66,41 @@ export default function CartPage() {
                   </button>
                 </div>
               ) : (
-                <table className="w-full border-collapse">
+                {/* ── Mobile card list ── */}
+                <div className="sm:hidden flex flex-col divide-y divide-[#F0EBE3]">
+                  {items.map((item) => (
+                    <div key={item.id} className="flex gap-4 py-5">
+                      <div className="w-[80px] h-[80px] bg-[#FFE8EC] rounded-lg overflow-hidden flex-shrink-0">
+                        <img src={item.image} alt={item.name} className="w-full h-full object-cover block" loading="lazy" />
+                      </div>
+                      <div className="flex-1 min-w-0 flex flex-col gap-1.5">
+                        <p className="font-poppins text-sm font-semibold text-dark leading-[1.3] truncate">{item.name}</p>
+                        <p className="font-poppins text-sm text-medium">{formatPrice(item.price)}</p>
+                        <div className="flex items-center gap-3 mt-1">
+                          <input
+                            type="number"
+                            className="w-[60px] h-9 border border-[#9F9F9F] rounded text-center font-poppins text-sm text-dark bg-white px-1 focus:outline-none focus:border-primary [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                            value={item.qty}
+                            min={1}
+                            onChange={(e) => updateQty(item.id, Number(e.target.value))}
+                            aria-label={`Quantidade de ${item.name}`}
+                          />
+                          <span className="font-poppins text-sm font-semibold text-dark">{formatPrice(item.price * item.qty)}</span>
+                        </div>
+                      </div>
+                      <button
+                        className="text-primary self-start p-1 hover:text-red-600 transition-colors duration-200"
+                        onClick={() => removeItem(item.id)}
+                        aria-label={`Remover ${item.name}`}
+                      >
+                        <span className="w-5 h-5 block"><TrashIcon /></span>
+                      </button>
+                    </div>
+                  ))}
+                </div>
+
+                {/* ── Desktop table ── */}
+                <table className="hidden sm:table w-full border-collapse">
                   <thead className="bg-cream">
                     <tr>
                       <th className="font-poppins text-base font-semibold text-dark py-5 px-5 text-left pl-6" colSpan={2}>Produto</th>
@@ -84,12 +118,8 @@ export default function CartPage() {
                             <img src={item.image} alt={item.name} className="w-full h-full object-cover block" loading="lazy" />
                           </div>
                         </td>
-                        <td className="py-6 px-5 align-middle font-poppins text-base text-dark whitespace-nowrap">
-                          {item.name}
-                        </td>
-                        <td className="py-6 px-5 align-middle font-poppins text-base text-medium whitespace-nowrap">
-                          {formatPrice(item.price)}
-                        </td>
+                        <td className="py-6 px-5 align-middle font-poppins text-base text-dark whitespace-nowrap">{item.name}</td>
+                        <td className="py-6 px-5 align-middle font-poppins text-base text-medium whitespace-nowrap">{formatPrice(item.price)}</td>
                         <td className="py-6 px-5 align-middle w-[90px]">
                           <input
                             type="number"
@@ -100,9 +130,7 @@ export default function CartPage() {
                             aria-label={`Quantidade de ${item.name}`}
                           />
                         </td>
-                        <td className="py-6 px-5 align-middle font-poppins text-base text-dark whitespace-nowrap">
-                          {formatPrice(item.price * item.qty)}
-                        </td>
+                        <td className="py-6 px-5 align-middle font-poppins text-base text-dark whitespace-nowrap">{formatPrice(item.price * item.qty)}</td>
                         <td className="py-6 pr-6 px-5 align-middle w-12">
                           <button
                             className="text-primary flex items-center p-1 hover:text-red-600 transition-colors duration-200"

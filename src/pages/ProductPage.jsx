@@ -72,7 +72,7 @@ export default function ProductPage() {
   return (
     <>
       <Header />
-      <main style={{ paddingTop: '100px' }}>
+      <main className="main-pad">
 
         {/* ── Breadcrumb ── */}
         <nav className="bg-cream py-[18px]" aria-label="Breadcrumb">
@@ -88,15 +88,15 @@ export default function ProductPage() {
 
         {/* ── Detail Section ── */}
         <section className="py-14 bg-white">
-          <div className="grid grid-cols-2 max-lg:grid-cols-1 gap-[72px] max-lg:gap-10 max-w-[1240px] mx-auto px-6 items-start">
+          <div className="grid grid-cols-2 max-lg:grid-cols-1 gap-[72px] max-lg:gap-10 max-w-[1240px] mx-auto px-4 sm:px-6 items-start">
 
             {/* Gallery */}
-            <div className="flex gap-5 items-start">
-              <div className="flex flex-col gap-4 flex-shrink-0">
+            <div className="flex gap-3 sm:gap-5 items-start">
+              <div className="flex flex-col gap-2 sm:gap-4 flex-shrink-0">
                 {product.gallery.map((img, i) => (
                   <button
                     key={i}
-                    className={`w-[76px] h-20 bg-[#FFE8EC] border-2 overflow-hidden transition-colors duration-200 ${
+                    className={`w-[56px] h-[60px] sm:w-[76px] sm:h-20 bg-[#FFE8EC] border-2 overflow-hidden transition-colors duration-200 ${
                       activeImg === i ? 'border-primary' : 'border-transparent hover:border-cream-dark'
                     }`}
                     onClick={() => setActiveImg(i)}
@@ -118,7 +118,7 @@ export default function ProductPage() {
 
             {/* Info */}
             <div className="flex flex-col gap-3">
-              <h1 className="font-poppins text-[42px] font-normal text-dark leading-[1.15]">{product.name}</h1>
+              <h1 className="font-poppins text-2xl sm:text-[42px] font-normal text-dark leading-[1.15]">{product.name}</h1>
               <p className="font-poppins text-2xl font-normal text-medium">{formatPrice(product.price)}</p>
               <p className="font-poppins text-[13px] text-medium mt-0.5">
                 ou 12x de {formatInstallment(product.price)} sem juros
@@ -173,8 +173,8 @@ export default function ProductPage() {
               </div>
 
               {/* Cart actions */}
-              <div className="flex items-center gap-4 flex-wrap mt-2">
-                <div className="flex items-center border border-[#9F9F9F] rounded overflow-hidden">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 flex-wrap mt-2">
+                <div className="flex items-center border border-[#9F9F9F] rounded overflow-hidden self-start sm:self-auto">
                   <button
                     className="w-11 h-[52px] font-poppins text-[22px] font-light text-dark hover:bg-cream transition-colors duration-150"
                     onClick={() => setQty((q) => Math.max(1, q - 1))}
@@ -192,12 +192,12 @@ export default function ProductPage() {
                   </button>
                 </div>
                 <button
-                  className="h-[52px] px-9 bg-dark text-white border border-dark font-poppins text-base font-medium rounded tracking-[0.03em] hover:bg-black transition-all duration-200"
+                  className="h-[52px] w-full sm:w-auto px-9 bg-dark text-white border border-dark font-poppins text-base font-medium rounded tracking-[0.03em] hover:bg-black transition-all duration-200"
                   onClick={() => addItem(product, qty)}
                 >
                   Adicionar ao Carrinho
                 </button>
-                <button className="h-[52px] px-7 bg-dark text-white border border-dark font-poppins text-base font-medium rounded hover:bg-black transition-all duration-200">
+                <button className="h-[52px] w-full sm:w-auto px-7 bg-dark text-white border border-dark font-poppins text-base font-medium rounded hover:bg-black transition-all duration-200">
                   + Comparar
                 </button>
               </div>
@@ -239,8 +239,8 @@ export default function ProductPage() {
 
         {/* ── Tabs ── */}
         <section className="bg-white py-12 pb-16 border-t border-[#E8E0D8]">
-          <div className="max-w-[1240px] mx-auto px-6">
-            <div className="flex gap-12 mb-9 border-b border-[#E8D0D4] max-sm:gap-6 max-sm:overflow-x-auto">
+          <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
+            <div className="flex gap-6 sm:gap-12 mb-9 border-b border-[#E8D0D4] overflow-x-auto">
               {[
                 { key: 'description', label: 'Descrição' },
                 { key: 'additional', label: 'Informações Adicionais' },
@@ -248,7 +248,7 @@ export default function ProductPage() {
               ].map((tab) => (
                 <button
                   key={tab.key}
-                  className={`pb-[18px] font-poppins text-xl font-normal border-b-2 -mb-px whitespace-nowrap transition-all duration-200 ${
+                  className={`pb-[18px] font-poppins text-base sm:text-xl font-normal border-b-2 -mb-px whitespace-nowrap transition-all duration-200 ${
                     activeTab === tab.key
                       ? 'text-dark font-medium border-dark'
                       : 'text-medium border-transparent hover:text-dark'
@@ -331,7 +331,7 @@ export default function ProductPage() {
         {/* ── Related Products ── */}
         <section className="bg-white py-12 pb-[72px] border-t border-[#E8E0D8] text-center">
           <h2 className="font-poppins text-[36px] font-bold text-dark mb-12">Produtos Relacionados</h2>
-          <div className="grid grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-6 max-w-[1240px] mx-auto px-6 text-left">
+          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 max-w-[1240px] mx-auto px-4 sm:px-6 text-left">
             {relatedProducts.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}

@@ -23,22 +23,22 @@ export default function ShopPage() {
   return (
     <>
       <Header />
-      <main style={{ paddingTop: '100px' }}>
+      <main className="main-pad">
         <ShopHero />
         <ShopFilter total={shopProducts.length} showing={visible.length} />
 
         <section className="py-20 bg-white">
-          <div className="grid grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-6 max-w-[1240px] mx-auto px-6 max-sm:max-w-[380px] max-sm:mx-auto">
+          <div className="grid grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-2 gap-4 sm:gap-6 max-w-[1240px] mx-auto px-4 sm:px-6">
             {visible.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
 
-          <div className="flex items-center justify-center gap-4 mt-12">
+          <div className="flex items-center justify-center flex-wrap gap-2 sm:gap-4 mt-10 sm:mt-12 px-4">
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
               <button
                 key={page}
-                className={`min-w-[56px] h-14 px-3 font-poppins text-lg rounded transition-all duration-200 ${
+                className={`min-w-[40px] sm:min-w-[56px] h-10 sm:h-14 px-2 sm:px-3 font-poppins text-sm sm:text-lg rounded transition-all duration-200 ${
                   currentPage === page
                     ? 'bg-primary text-white font-semibold'
                     : 'bg-[#FFE8EC] text-dark hover:bg-primary hover:text-white'
@@ -50,7 +50,7 @@ export default function ShopPage() {
             ))}
             {currentPage < totalPages && (
               <button
-                className="min-w-[56px] h-14 px-3 bg-[#FFE8EC] text-dark font-poppins text-lg rounded hover:bg-primary hover:text-white transition-all duration-200"
+                className="min-w-[40px] sm:min-w-[56px] h-10 sm:h-14 px-2 sm:px-3 bg-[#FFE8EC] text-dark font-poppins text-sm sm:text-lg rounded hover:bg-primary hover:text-white transition-all duration-200"
                 onClick={() => { setCurrentPage((p) => p + 1); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               >
                 Next

@@ -10,7 +10,7 @@ export default function HomePage() {
   return (
     <>
       <Header />
-      <main style={{ paddingTop: '100px' }}>
+      <main className="main-pad">
         <Hero />
         <BrowseRange />
         <Products />

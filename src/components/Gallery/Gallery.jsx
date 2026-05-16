@@ -8,18 +8,13 @@ export default function Gallery() {
         <span className="font-poppins text-[28px] font-bold text-dark block mb-2">#BellaStore</span>
       </div>
 
-      <div
-        className="grid gap-3 max-xl:grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1"
-        style={{
-          gridTemplateColumns: 'repeat(5, 1fr)',
-          gridTemplateRows: 'repeat(2, 280px)',
-        }}
-      >
+      <div className="gallery-grid grid gap-2 sm:gap-3">
         {galleryImages.map((src, i) => (
           <div
             className={`gallery-item overflow-hidden relative cursor-pointer ${
               i === 0 || i === 2 ? 'row-span-2' : ''
             }`}
+            style={{ minHeight: '160px' }}
             key={i}
           >
             <img

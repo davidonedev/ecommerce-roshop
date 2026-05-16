@@ -50,11 +50,11 @@ export default function AboutPage() {
   return (
     <>
       <Header />
-      <main style={{ paddingTop: '100px' }}>
+      <main className="main-pad">
 
         {/* ── Hero ── */}
         <section
-          className="relative h-[280px] bg-cover bg-center flex items-center justify-center"
+          className="relative h-[180px] sm:h-[280px] bg-cover bg-center flex items-center justify-center"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1445205170230-053b83016050?w=1440&q=80')" }}
         >
           <div className="absolute inset-0" style={{ background: 'rgba(255,255,255,0.72)' }} />
@@ -63,7 +63,7 @@ export default function AboutPage() {
               <path d="M 8 6 L 8 34" stroke="#AC274F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none" />
               <path d="M 8 6 L 20 6 C 31 6 31 20 20 20 L 8 20 M 8 20 L 22 20 C 34 20 34 34 22 34 L 8 34" stroke="#AC274F" strokeWidth="2.5" strokeLinecap="round" />
             </svg>
-            <h1 className="font-poppins text-[48px] font-bold text-dark leading-[1.1]">Sobre</h1>
+            <h1 className="font-poppins text-3xl sm:text-[48px] font-bold text-dark leading-[1.1]">Sobre</h1>
             <nav className="flex items-center gap-1.5 font-poppins text-sm mt-1" aria-label="Navegação">
               <Link to="/" className="font-semibold text-dark hover:text-primary transition-colors duration-200">Início</Link>
               <svg className="w-3.5 h-3.5 text-medium" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
@@ -75,14 +75,14 @@ export default function AboutPage() {
         </section>
 
         {/* ── Nossa História ── */}
-        <section className="py-24 bg-white">
-          <div className="grid grid-cols-2 max-lg:grid-cols-1 gap-16 max-w-[1240px] mx-auto px-6 items-center">
+        <section className="py-14 sm:py-24 bg-white">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 max-w-[1240px] mx-auto px-4 sm:px-6 items-center">
 
             <div className="overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=800&q=85"
                 alt="Coleção feminina Bella Store"
-                className="w-full h-[580px] object-cover object-center"
+                className="w-full h-[280px] sm:h-[420px] lg:h-[580px] object-cover object-center"
               />
             </div>
 
@@ -114,7 +114,7 @@ export default function AboutPage() {
 
         {/* ── Stats ── */}
         <section className="bg-cream py-20">
-          <div className="grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-2 gap-12 max-w-[1240px] mx-auto px-6 text-center">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-12 max-w-[1240px] mx-auto px-4 sm:px-6 text-center">
             {stats.map((s) => (
               <div key={s.label} className="flex flex-col items-center gap-3">
                 <span
@@ -131,8 +131,8 @@ export default function AboutPage() {
         </section>
 
         {/* ── Nossos Valores ── */}
-        <section className="py-24 bg-white">
-          <div className="max-w-[1240px] mx-auto px-6">
+        <section className="py-14 sm:py-24 bg-white">
+          <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
             <div className="text-center mb-16">
               <span className="font-poppins text-sm font-semibold tracking-[0.14em] text-primary uppercase mb-3 block">
                 O Que Nos Move
@@ -140,11 +140,11 @@ export default function AboutPage() {
               <h2 className="font-poppins text-[40px] font-bold text-dark">Nossos Valores</h2>
             </div>
 
-            <div className="grid grid-cols-3 max-lg:grid-cols-1 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
               {values.map((v) => (
                 <div
                   key={v.title}
-                  className="flex flex-col items-center text-center gap-6 px-8 py-12 border border-[#E8D0D4] hover:border-primary hover:shadow-card-hover transition-all duration-300"
+                  className="flex flex-col items-center text-center gap-5 px-6 sm:px-8 py-8 sm:py-12 border border-[#E8D0D4] hover:border-primary hover:shadow-card-hover transition-all duration-300"
                 >
                   <span className="w-[72px] h-[72px] rounded-full bg-cream flex items-center justify-center text-primary flex-shrink-0">
                     <span className="w-8 h-8 block">{v.icon}</span>
@@ -160,8 +160,8 @@ export default function AboutPage() {
         </section>
 
         {/* ── Quem Somos ── */}
-        <section className="py-24 bg-cream">
-          <div className="grid grid-cols-2 max-lg:grid-cols-1 gap-16 max-w-[1240px] mx-auto px-6 items-center">
+        <section className="py-14 sm:py-24 bg-cream">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 max-w-[1240px] mx-auto px-4 sm:px-6 items-center">
 
             <div>
               <span className="font-poppins text-sm font-semibold tracking-[0.14em] text-primary uppercase mb-4 block">
@@ -191,14 +191,14 @@ export default function AboutPage() {
               <img
                 src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=85"
                 alt="Equipe Bella Store"
-                className="w-full h-[580px] object-cover object-center"
+                className="w-full h-[280px] sm:h-[420px] lg:h-[580px] object-cover object-center"
               />
             </div>
           </div>
         </section>
 
         {/* ── CTA ── */}
-        <section className="py-24 bg-primary text-center px-6">
+        <section className="py-14 sm:py-24 bg-primary text-center px-6">
           <h2
             className="font-poppins font-bold text-white leading-[1.15] mb-5"
             style={{ fontSize: 'clamp(28px, 3.5vw, 44px)' }}

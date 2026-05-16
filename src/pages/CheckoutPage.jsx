@@ -37,7 +37,7 @@ export default function CheckoutPage() {
     return (
       <>
         <Header />
-        <main style={{ paddingTop: '100px', minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <main className="main-pad" style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <div className="text-center px-6 py-10">
             <svg className="w-[72px] h-[72px] mx-auto mb-6" viewBox="0 0 24 24" fill="none" stroke="#AC274F" strokeWidth="2">
               <circle cx="12" cy="12" r="10" />
@@ -62,11 +62,11 @@ export default function CheckoutPage() {
   return (
     <>
       <Header />
-      <main style={{ paddingTop: '100px' }}>
+      <main className="main-pad">
 
         {/* ── Hero ── */}
         <section
-          className="relative h-[280px] bg-cover bg-center flex items-center justify-center"
+          className="relative h-[180px] sm:h-[280px] bg-cover bg-center flex items-center justify-center"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1440&q=80')" }}
         >
           <div className="absolute inset-0" style={{ background: 'rgba(255,255,255,0.72)' }} />
@@ -88,13 +88,13 @@ export default function CheckoutPage() {
 
         {/* ── Content ── */}
         <section className="py-[72px] pb-24 bg-white">
-          <div className="grid grid-cols-[1fr_480px] max-xl:grid-cols-[1fr_400px] max-lg:grid-cols-1 gap-20 max-xl:gap-12 max-lg:gap-14 max-w-[1240px] mx-auto px-6 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-10 lg:gap-16 max-w-[1240px] mx-auto px-4 sm:px-6 items-start">
 
             {/* ── Billing Form ── */}
             <form className="flex flex-col gap-6" onSubmit={handleSubmit} noValidate>
               <h2 className="font-poppins text-[36px] font-bold text-dark mb-3">Dados de Cobrança</h2>
 
-              <div className="flex gap-6">
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
                 <div className="flex flex-col gap-2.5 flex-1">
                   <label className="font-poppins text-sm font-medium text-dark" htmlFor="firstName">Nome</label>
                   <input id="firstName" name="firstName" type="text"
