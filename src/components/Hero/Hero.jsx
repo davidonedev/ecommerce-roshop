@@ -5,13 +5,13 @@ export default function Hero() {
       <div
         className="absolute inset-0 bg-cover bg-no-repeat"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1800&q=90')",
-          backgroundPosition: 'center 30%',
+          backgroundImage: "url('https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1800&q=90')",
+          backgroundPosition: 'left center',
         }}
       />
 
-      {/* Overlay */}
-      <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.15) 100%)' }} />
+      {/* Overlay — escurece levemente a direita para destacar o card sem apagar a modelo à esquerda */}
+      <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.10) 40%, rgba(0,0,0,0.38) 100%)' }} />
 
       {/* Card */}
       <div
@@ -25,8 +25,8 @@ export default function Hero() {
           Descubra Nossa<br />Nova Coleção
         </h1>
         <p className="font-poppins text-sm leading-[1.7] text-medium mb-10 max-w-[300px]">
-          Explore nossos móveis exclusivos e transforme cada ambiente da sua casa
-          em um espaço único e acolhedor.
+          Descubra peças únicas de moda feminina — roupas e acessórios selecionados
+          para realçar sua beleza e expressar seu estilo.
         </p>
         <button className="bg-primary text-white font-poppins text-sm tracking-[0.08em] px-14 py-4 hover:bg-primary-dark transition-colors duration-200">
           COMPRE AGORA

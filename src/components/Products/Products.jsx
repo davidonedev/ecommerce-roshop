@@ -42,7 +42,7 @@ export function ProductCard({ product }) {
         {/* Overlay */}
         <div className="product-overlay absolute inset-0 bg-dark/40 flex flex-col items-center justify-center gap-4 opacity-0 transition-opacity duration-300">
           <button
-            className="bg-white text-primary font-poppins font-semibold text-sm px-9 py-3.5 whitespace-nowrap hover:bg-primary hover:text-white transition-all duration-200"
+            className="bg-primary text-white font-poppins font-semibold text-sm px-9 py-3.5 whitespace-nowrap hover:bg-primary-dark transition-all duration-200"
             onClick={(e) => { e.stopPropagation(); addItem(product, 1); }}
           >
             Adicionar ao carrinho
@@ -96,7 +96,7 @@ export default function Products() {
       </div>
 
       <div className="mt-12">
-        <button className="font-poppins text-[15px] tracking-[0.04em] px-[72px] py-3.5 border border-dark text-dark hover:bg-dark hover:text-white transition-all duration-200">
+        <button className="font-poppins text-[15px] tracking-[0.04em] px-[72px] py-3.5 bg-dark text-white border border-dark hover:bg-black transition-all duration-200">
           Ver Mais
         </button>
       </div>

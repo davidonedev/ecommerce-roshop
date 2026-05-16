@@ -67,8 +67,8 @@ export default function ContactPage() {
           <div className="absolute inset-0" style={{ background: 'rgba(255,255,255,0.72)' }} />
           <div className="relative flex flex-col items-center gap-1 text-center">
             <svg className="w-14 h-14 mb-2" viewBox="0 0 40 40" fill="none">
-              <path d="M5 32 L20 8 L35 32" stroke="#AC274F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-              <path d="M10 24 L30 24" stroke="#AC274F" strokeWidth="2.5" strokeLinecap="round"/>
+              <path d="M 8 6 L 8 34" stroke="#AC274F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              <path d="M 8 6 L 20 6 C 31 6 31 20 20 20 L 8 20 M 8 20 L 22 20 C 34 20 34 34 22 34 L 8 34" stroke="#AC274F" strokeWidth="2.5" strokeLinecap="round"/>
             </svg>
             <h1 className="font-poppins text-[48px] font-bold text-dark leading-[1.1]">Contato</h1>
             <nav className="flex items-center gap-1.5 font-poppins text-sm mt-1" aria-label="Navegação">

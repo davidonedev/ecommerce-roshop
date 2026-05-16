@@ -192,12 +192,12 @@ export default function ProductPage() {
                   </button>
                 </div>
                 <button
-                  className="h-[52px] px-9 bg-white text-dark border border-dark font-poppins text-base font-medium rounded tracking-[0.03em] hover:bg-dark hover:text-white transition-all duration-200"
+                  className="h-[52px] px-9 bg-dark text-white border border-dark font-poppins text-base font-medium rounded tracking-[0.03em] hover:bg-black transition-all duration-200"
                   onClick={() => addItem(product, qty)}
                 >
                   Adicionar ao Carrinho
                 </button>
-                <button className="h-[52px] px-7 bg-transparent text-dark border border-dark font-poppins text-base font-medium rounded hover:bg-dark hover:text-white transition-all duration-200">
+                <button className="h-[52px] px-7 bg-dark text-white border border-dark font-poppins text-base font-medium rounded hover:bg-black transition-all duration-200">
                   + Comparar
                 </button>
               </div>
@@ -276,24 +276,6 @@ export default function ProductPage() {
                     cuidadosamente planejadas permitem posicioná-lo com conforto no seu espaço, enquanto
                     os materiais de qualidade garantem fácil cuidado e longevidade com estilo.
                   </p>
-                  <div className="grid grid-cols-2 max-md:grid-cols-1 gap-6 mt-9">
-                    <div className="bg-[#FFE8EC] overflow-hidden rounded-sm" style={{ aspectRatio: '16/10' }}>
-                      <img
-                        src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&q=80"
-                        alt="Produto em ambiente"
-                        className="w-full h-full object-cover block"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="bg-[#FFE8EC] overflow-hidden rounded-sm" style={{ aspectRatio: '16/10' }}>
-                      <img
-                        src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=700&q=80"
-                        alt="Detalhe do produto"
-                        className="w-full h-full object-cover block"
-                        loading="lazy"
-                      />
-                    </div>
-                  </div>
                 </>
               )}
 
@@ -356,7 +338,7 @@ export default function ProductPage() {
           </div>
           <div className="mt-12">
             <button
-              className="font-poppins text-[15px] tracking-[0.04em] px-[72px] py-3.5 border border-dark text-dark hover:bg-dark hover:text-white transition-all duration-200"
+              className="font-poppins text-[15px] tracking-[0.04em] px-[72px] py-3.5 bg-dark text-white border border-dark hover:bg-black transition-all duration-200"
               onClick={() => navigate('/shop')}
             >
               Ver Mais

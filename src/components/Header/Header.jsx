@@ -4,7 +4,7 @@ import { useCart } from '../../context/CartContext';
 const NavLinks = [
   { label: 'Início', to: '/' },
   { label: 'Loja', to: '/shop' },
-  { label: 'Sobre', to: '#about' },
+  { label: 'Sobre', to: '/about' },
   { label: 'Contato', to: '/contact' },
 ];
 
@@ -17,10 +17,10 @@ export default function Header() {
       {/* Logo */}
       <Link to="/" className="flex items-center gap-1.5 cursor-pointer">
         <svg className="w-10 h-10" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 32 L20 8 L35 32" stroke="#AC274F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-          <path d="M10 24 L30 24" stroke="#AC274F" strokeWidth="2.5" strokeLinecap="round"/>
+          <path d="M 8 6 L 8 34" stroke="#AC274F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+          <path d="M 8 6 L 20 6 C 31 6 31 20 20 20 L 8 20 M 8 20 L 22 20 C 34 20 34 34 22 34 L 8 34" stroke="#AC274F" strokeWidth="2.5" strokeLinecap="round"/>
         </svg>
-        <span className="font-poppins font-bold text-[26px] text-dark tracking-[-0.5px]">Furniro</span>
+        <span className="font-poppins font-bold text-[26px] text-dark tracking-[-0.5px]">Bella Store</span>
       </Link>
 
       {/* Navigation */}
