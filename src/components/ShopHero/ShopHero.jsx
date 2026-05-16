@@ -4,7 +4,7 @@ export default function ShopHero() {
   return (
     <section
       className="relative h-[280px] bg-cover bg-center flex items-center justify-center"
-      style={{ backgroundImage: "url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1440&q=80')" }}
+      style={{ backgroundImage: "url('https://images.unsplash.com/photo-1445205170230-053b83016050?w=1440&q=80')" }}
     >
       {/* White overlay */}
       <div className="absolute inset-0" style={{ background: 'rgba(255,255,255,0.72)' }} />

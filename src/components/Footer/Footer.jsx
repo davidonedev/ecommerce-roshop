@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const links = [
   { label: 'Início', to: '/' },
   { label: 'Loja', to: '/shop' },
-  { label: 'Sobre', to: '#about' },
+  { label: 'Sobre', to: '/about' },
   { label: 'Contato', to: '/contact' },
 ];
 
@@ -21,10 +21,10 @@ export default function Footer() {
         <div className="max-w-[280px]">
           <Link to="/" className="flex items-center gap-1.5 mb-7">
             <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
-              <path d="M5 32 L20 8 L35 32" stroke="#AC274F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-              <path d="M10 24 L30 24" stroke="#AC274F" strokeWidth="2.5" strokeLinecap="round"/>
+              <path d="M 8 6 L 8 34" stroke="#AC274F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              <path d="M 8 6 L 20 6 C 31 6 31 20 20 20 L 8 20 M 8 20 L 22 20 C 34 20 34 34 22 34 L 8 34" stroke="#AC274F" strokeWidth="2.5" strokeLinecap="round"/>
             </svg>
-            <span className="font-poppins text-2xl font-bold text-dark">Funiro.</span>
+            <span className="font-poppins text-2xl font-bold text-dark">Bella Store</span>
           </Link>
           <address className="font-poppins text-sm text-light leading-[1.8] not-italic">
             400 University Drive Suite 200 Coral<br />
@@ -86,7 +86,7 @@ export default function Footer() {
 
       <div className="border-t border-[#E8D0D4] py-7 px-6 max-w-[1240px] mx-auto">
         <p className="font-poppins text-[13px] text-medium font-medium">
-          2023 Funiro. Todos os direitos reservados
+          2023 Bella Store. Todos os direitos reservados
         </p>
       </div>
     </footer>

@@ -5,7 +5,7 @@ export default function Gallery() {
     <section className="py-20 text-center">
       <div className="mb-10">
         <span className="font-poppins text-sm text-light leading-[1.6] block">Compartilhe sua decoração com</span>
-        <span className="font-poppins text-[28px] font-bold text-dark block mb-2">#FuniroFurniture</span>
+        <span className="font-poppins text-[28px] font-bold text-dark block mb-2">#BellaStore</span>
       </div>
 
       <div
@@ -18,13 +18,13 @@ export default function Gallery() {
         {galleryImages.map((src, i) => (
           <div
             className={`gallery-item overflow-hidden relative cursor-pointer ${
-              i === 0 || i === 2 || i === 5 ? 'row-span-2' : ''
+              i === 0 || i === 2 ? 'row-span-2' : ''
             }`}
             key={i}
           >
             <img
               src={src}
-              alt={`Ambiente Furniro ${i + 1}`}
+              alt={`Ambiente Bella Store ${i + 1}`}
               className="gallery-img w-full h-full object-cover transition-transform duration-[400ms] ease-in-out"
               loading="lazy"
             />

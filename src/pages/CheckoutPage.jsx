@@ -47,7 +47,7 @@ export default function CheckoutPage() {
             <p className="font-poppins text-base text-medium mb-8">Obrigado pela sua compra. Entraremos em contato em breve.</p>
             <Link
               to="/"
-              className="inline-block font-poppins text-base tracking-[0.04em] px-12 py-3.5 border border-dark text-dark hover:bg-dark hover:text-white transition-all duration-200"
+              className="inline-block font-poppins text-base tracking-[0.04em] px-12 py-3.5 bg-dark text-white border border-dark hover:bg-black transition-all duration-200"
             >
               Voltar para o Início
             </Link>
@@ -72,8 +72,8 @@ export default function CheckoutPage() {
           <div className="absolute inset-0" style={{ background: 'rgba(255,255,255,0.72)' }} />
           <div className="relative flex flex-col items-center gap-1 text-center">
             <svg className="w-14 h-14 mb-2" viewBox="0 0 40 40" fill="none">
-              <path d="M5 32 L20 8 L35 32" stroke="#AC274F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-              <path d="M10 24 L30 24" stroke="#AC274F" strokeWidth="2.5" strokeLinecap="round"/>
+              <path d="M 8 6 L 8 34" stroke="#AC274F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              <path d="M 8 6 L 20 6 C 31 6 31 20 20 20 L 8 20 M 8 20 L 22 20 C 34 20 34 34 22 34 L 8 34" stroke="#AC274F" strokeWidth="2.5" strokeLinecap="round"/>
             </svg>
             <h1 className="font-poppins text-[48px] font-bold text-dark leading-[1.1]">Finalizar Compra</h1>
             <nav className="flex items-center gap-1.5 font-poppins text-sm mt-1" aria-label="Navegação">
@@ -259,7 +259,7 @@ export default function CheckoutPage() {
               </p>
 
               <button
-                className="w-full max-w-[300px] h-14 bg-white text-dark border border-dark rounded-md font-poppins text-lg font-medium tracking-[0.02em] hover:bg-dark hover:text-white transition-all duration-[250ms]"
+                className="w-full max-w-[300px] h-14 bg-dark text-white border border-dark rounded-md font-poppins text-lg font-medium tracking-[0.02em] hover:bg-black transition-all duration-[250ms]"
                 type="button"
                 onClick={handleSubmit}
               >

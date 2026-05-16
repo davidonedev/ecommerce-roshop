@@ -36,8 +36,8 @@ export default function CartPage() {
           <div className="absolute inset-0" style={{ background: 'rgba(255,255,255,0.72)' }} />
           <div className="relative flex flex-col items-center gap-1 text-center">
             <svg className="w-14 h-14 mb-2" viewBox="0 0 40 40" fill="none">
-              <path d="M5 32 L20 8 L35 32" stroke="#AC274F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-              <path d="M10 24 L30 24" stroke="#AC274F" strokeWidth="2.5" strokeLinecap="round"/>
+              <path d="M 8 6 L 8 34" stroke="#AC274F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              <path d="M 8 6 L 20 6 C 31 6 31 20 20 20 L 8 20 M 8 20 L 22 20 C 34 20 34 34 22 34 L 8 34" stroke="#AC274F" strokeWidth="2.5" strokeLinecap="round"/>
             </svg>
             <h1 className="font-poppins text-[48px] font-bold text-dark leading-[1.1]">Carrinho</h1>
             <nav className="flex items-center gap-1.5 font-poppins text-sm mt-1" aria-label="Navegação">
@@ -59,7 +59,7 @@ export default function CartPage() {
                 <div className="text-center py-16 px-6 font-poppins">
                   <p className="text-lg text-medium mb-6">Seu carrinho está vazio.</p>
                   <button
-                    className="font-poppins text-sm tracking-[0.04em] px-12 py-3.5 border border-dark text-dark hover:bg-dark hover:text-white transition-all duration-200"
+                    className="font-poppins text-sm tracking-[0.04em] px-12 py-3.5 bg-dark text-white border border-dark hover:bg-black transition-all duration-200"
                     onClick={() => navigate('/shop')}
                   >
                     Continuar Comprando
@@ -136,7 +136,7 @@ export default function CartPage() {
                 </div>
 
                 <button
-                  className="w-full h-[58px] bg-white text-dark border border-dark rounded-md font-poppins text-lg font-medium mt-8 tracking-[0.02em] hover:bg-dark hover:text-white transition-all duration-[250ms]"
+                  className="w-full h-[58px] bg-dark text-white border border-dark rounded-md font-poppins text-lg font-medium mt-8 tracking-[0.02em] hover:bg-black transition-all duration-[250ms]"
                   onClick={() => navigate('/checkout')}
                 >
                   Finalizar Compra

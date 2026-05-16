@@ -66,7 +66,7 @@ export default function CartSidebar() {
                 </div>
 
                 <button
-                  className="w-[22px] h-[22px] rounded-full bg-[#C4A8B2] text-white text-base leading-none flex items-center justify-center flex-shrink-0 hover:bg-dark transition-colors duration-200"
+                  className="w-[22px] h-[22px] rounded-full bg-[#C4A8B2] text-white text-base leading-none flex items-center justify-center flex-shrink-0 hover:bg-primary transition-colors duration-200"
                   onClick={() => removeItem(item.id)}
                   aria-label={`Remover ${item.name}`}
                 >
@@ -88,19 +88,19 @@ export default function CartSidebar() {
 
           <div className="flex gap-3">
             <button
-              className="flex-1 h-11 border border-dark rounded-full font-poppins text-sm text-dark transition-all duration-200 hover:bg-dark hover:text-white"
+              className="flex-1 h-11 bg-dark text-white border border-dark rounded-full font-poppins text-sm transition-all duration-200 hover:bg-black"
               onClick={() => handleNavigate('/cart')}
             >
               Carrinho
             </button>
             <button
-              className="flex-1 h-11 border border-dark rounded-full font-poppins text-sm text-dark transition-all duration-200 hover:bg-dark hover:text-white"
+              className="flex-1 h-11 bg-dark text-white border border-dark rounded-full font-poppins text-sm transition-all duration-200 hover:bg-black"
               onClick={() => handleNavigate('/checkout')}
             >
               Finalizar
             </button>
             <button
-              className="flex-1 h-11 border border-dark rounded-full font-poppins text-sm text-dark transition-all duration-200 hover:bg-dark hover:text-white"
+              className="flex-1 h-11 bg-dark text-white border border-dark rounded-full font-poppins text-sm transition-all duration-200 hover:bg-black"
               onClick={() => setIsOpen(false)}
             >
               Comparar
